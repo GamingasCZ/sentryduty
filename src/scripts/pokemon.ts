@@ -47,7 +47,6 @@ export const generatePokemonForRound = (rounds = ROUNDS, guessablePokemon = POKE
         answers.push(getSeededRNumber(i, 4))
     }
 
-    console.log(allRounds)
     return [allRounds, answers]
 }
 

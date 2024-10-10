@@ -1,4 +1,4 @@
-import { generateDailySeed, generatePokemonForRound, getPokemon, POKEMON_COUNT } from "./pokemon";
+import { generateDailySeed, generatePokemonForRound, getPokemon, POKEMON_COUNT, ROUNDS } from "./pokemon";
 import { describe, expect, test } from "vitest";
 import { readdirSync } from "fs";
 
@@ -37,7 +37,15 @@ describe("Game", () => {
         expect(seedsForNextYear.length - seedsSet.size).toBeLessThan(5)
     })
     
-    test("Generate pokemon for round", () => {
-        expect(generatePokemonForRound()).toBe(0)
+    describe("Generate Pokemon", () => {
+        let round = generatePokemonForRound()
+        test("Round is valid", () => {
+            expect(round[0].length == round[1].length && round[0].length == ROUNDS).toBeTruthy()
+        })
+        test("Round has no duplicate choices", () => {
+            for (const r in round[0]) {
+                expect(new Set(r).size == r.length).toBeTruthy()
+            }
+        })
     })
 })
