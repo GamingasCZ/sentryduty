@@ -1,5 +1,29 @@
-# Vue 3 + TypeScript + Vite
+# Sentry Duty
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## About
+This is a recreation of the Sentry Duty minigame from the *Pokémon Mystery Dungeon: Explorers* games.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## Run
+To run the game on your local machine, clone this repo, install the dependencies and run it
+```sh
+git clone https://github.com/GamingasCZ/sentryduty
+cd sentryduty
+npm i
+npm run dev
+```
+## Tests
+To test the game, run
+```sh
+npm run test
+```
+
+## Credits
+All sprites, music belong to [Spike Chunsoft Ltd.](https://www.spike-chunsoft.com/)
+
+[Pokémon](https://pokemon.com) is a registered trademark of Nintendo/Creatures Inc./GAME FREAK Inc. 
+
+Sentry Duty hints have been ripped straight from the game using [SkyTemple](https://skytemple.org/)
+
+Portraits have been taken from the [PMD Sprite Repository](https://github.com/PMDCollab/SpriteCollab)
+
+Footprints have been taken from [Bulbapedia](https://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_footprint)
