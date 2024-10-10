@@ -2,8 +2,6 @@ import { getPokemon, POKEMON_COUNT } from "./pokemon";
 import { describe, expect, test } from "vitest";
 import { readdirSync } from "fs";
 
-const base = import.meta.env.BASE_URL
-
 describe.concurrent("Loading Pokemon", async () => {
     let pokemon = await getPokemon()
     let portraitsDir = readdirSync("public/portraits")
