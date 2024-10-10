@@ -1,14 +1,10 @@
 <script setup lang="ts">
-import { computed } from 'vue';
 import { DIFFICULTY } from './scripts/pokemon';
 import strings from './strings';
 
 const emit = defineEmits<{
     (e: "startGame"): void
 }>()
-
-const today = new Date()
-const formattedDate = computed(() => `${today.toDateString()}`)
 
 </script>
 
