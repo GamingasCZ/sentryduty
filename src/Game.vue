@@ -78,15 +78,15 @@ const submitGuess = (guessPokemonID: number) => {
 
     // Corrent answer, add points
     if (answerPokemon.value.id == guessPokemonID) {
-        addScore(timeLeft.value)
+        addScore()
     }
 
     clearInterval(timer)
     startNextRound()
 }
 
-const addScore = (add: number) => {
-    SCORE.value += ROUND_TIME_SEC*100 - Math.round(Date.now() - timeLeftMSec.value)
+const addScore = () => {
+    SCORE.value += ROUND_TIME_SEC*100 - Math.round(Date.now()/1000 - timeLeftMSec.value/1000)
 }
 
 const base = import.meta.env.BASE_URL

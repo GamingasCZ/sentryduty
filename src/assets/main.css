@@ -3,9 +3,16 @@
 @tailwind utilities;
 
 body {
-    background-color: black;
+    @apply bg-black bg-[url(../images/dirt.jpg)] flex absolute inset-0 justify-center items-center;
 }
 
+
+.eosBorder {
+    @apply border-transparent border-[10px] border-solid;
+    border-image: url(../images/border.png) 7 round;
+}
+
+/* Used to properly scale pixel art */
 .pixelated {
     image-rendering: pixelated;
 }
