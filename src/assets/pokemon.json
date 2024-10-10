@@ -1,0 +1,1002 @@
+[
+ {
+   "name": "Torchic",
+   "id": 283,
+   "hint": [
+      "It totters around on unsteady feet.",
+      "It is covered in a fluffy coat of down.",
+      "It spits fireballs.",
+      "It is a Chick Pokémon."
+   ]
+},
+ {
+   "name": "Croconaw",
+   "id": 159,
+   "hint": [
+      "It opens its huge jaws wide when attacking.",
+      "There are 48 fangs lining its mouth.",
+      "Once it bites down, it won't let go until it loses its fangs.",
+      "It is a Big Jaw Pokémon."
+   ]
+},
+ {
+   "name": "Eevee",
+   "id": 133,
+   "hint": [
+      "It is very cute.",
+      "It has an unstable genetic makeup.",
+      "It appears to have the possibility of evolving into seven kinds of Pokémon.",
+      "It is an Evolution Pokémon."
+   ]
+},
+ {
+   "name": "Skarmory",
+   "id": 254,
+   "hint": [
+      "It is clad entirely in iron-hard armor.",
+      "It wheels through the sky at over 180 mph.",
+      "Its sharp feathers were used to make swords and knives.",
+      "It is an Armor Bird Pokémon."
+   ]
+},
+ {
+   "name": "Skitty",
+   "id": 328,
+   "hint": [
+      "It can't stop itself from chasing moving things.",
+      "It runs in a circle, chasing its own tail.",
+      "It usually lives in forests. Specifically, inside holes in trees.",
+      "It is a Kitten Pokémon."
+   ]
+},
+ {
+   "name": "Delcatty",
+   "id": 329,
+   "hint": [
+      "It does as it pleases at its own pace.",
+      "It eats and sleeps whenever and wherever it decides.",
+      "It is highly popular for its sublime fur.",
+      "It is a Prim Pokémon."
+   ]
+},
+ {
+   "name": "Empoleon",
+   "id": 430,
+   "hint": [
+      "It has a beak.",
+      "It swims as fast as a jet boat.",
+      "Three horns extend from its beak.",
+      "It is an Emperor Pokémon."
+   ]
+},
+ {
+   "name": "Feraligatr",
+   "id": 160,
+   "hint": [
+      "It is very large.",
+      "It usually moves slowly.",
+      "It bites with massive and powerful jaws.",
+      "It's a Big Jaw Pokémon."
+   ]
+},
+ {
+   "name": "Octillery",
+   "id": 251,
+   "hint": [
+      "It has a rock-hard head.",
+      "It has suction cups.",
+      "It spews murky ink from its mouth.",
+      "It is a Jet Pokémon."
+   ]
+},
+ {
+   "name": "Pinsir",
+   "id": 127,
+   "hint": [
+      "It has long pincers.",
+      "On cold nights, it sleeps under the ground.",
+      "It grips prey with its pincers.",
+      "It is a Stag Beetle Pokémon."
+   ]
+},
+ {
+   "name": "Hippowdon",
+   "id": 492,
+   "hint": [
+      "It can store sand in its body.",
+      "Its mouth is huge.",
+      "It blows sand from ports on its body to make a towering twister.",
+      "It is a Heavyweight Pokémon."
+   ]
+},
+ {
+   "name": "Snorlax",
+   "id": 143,
+   "hint": [
+      "It is very lazy.",
+      "It eats an enormous amount.",
+      "It goes to sleep as soon as it finishes eating.",
+      "It is a Sleeping Pokémon."
+   ]
+},
+ {
+   "name": "Wartortle",
+   "id": 8,
+   "hint": [
+      "It has a shell.",
+      "It swims.",
+      "It has furry ears and tail.",
+      "It is a Turtle Pokémon."
+   ]
+},
+ {
+   "name": "Blastoise",
+   "id": 9,
+   "hint": [
+      "It has a shell.",
+      "In a pinch, it withdraws into its shell.",
+      "It spouts water from rocket cannons on its shell.",
+      "It is a Shellfish Pokémon."
+   ]
+},
+ {
+   "name": "Treecko",
+   "id": 280,
+   "hint": [
+      "Its tail is thick.",
+      "The soles of its feet are covered by countless tiny spikes.",
+      "It can walk on walls and ceilings.",
+      "It is a Wood Gecko Pokémon."
+   ]
+},
+ {
+   "name": "Tauros",
+   "id": 128,
+   "hint": [
+      "It is always rampaging.",
+      "Once it takes aim, it charges with its horns.",
+      "They fight each other by locking horns.",
+      "It is a Wild Bull Pokémon."
+   ]
+},
+ {
+   "name": "Infernape",
+   "id": 427,
+   "hint": [
+      "It has a fiery nature.",
+      "It uses a special kind of martial arts.",
+      "It burns with a flame that never goes out.",
+      "It is a Flame Pokémon."
+   ]
+},
+ {
+   "name": "Whismur",
+   "id": 321,
+   "hint": [
+      "Its voice is normally very quiet.",
+      "If it senses danger, it starts crying at an earsplitting volume.",
+      "When it stops crying, it goes to sleep, all tired out.",
+      "It is a Whisper Pokémon."
+   ]
+},
+ {
+   "name": "Munchlax",
+   "id": 488,
+   "hint": [
+      "It swallows food whole with almost no chewing.",
+      "It hides food under its long body hair.",
+      "It forgets it has hidden food under its hair.",
+      "It is a Big Eater Pokémon."
+   ]
+},
+ {
+   "name": "Hitmonlee",
+   "id": 106,
+   "hint": [
+      "Its legs can stretch double in length.",
+      "It can kick in succession.",
+      "It can execute every known kick.",
+      "It is a Kicking Pokémon."
+   ]
+},
+ {
+   "name": "Zangoose",
+   "id": 363,
+   "hint": [
+      "It has sharp claws.",
+      "It has incredible agility.",
+      "It feuds with [CS:N]Seviper[CR].",
+      "It is a Cat Ferret Pokémon."
+   ]
+},
+ {
+   "name": "Sandslash",
+   "id": 28,
+   "hint": [
+      "It digs at an incredible pace.",
+      "It slashes foes with its claws.",
+      "It curls up its spike-covered back and tackles.",
+      "It is a Mouse Pokémon."
+   ]
+},
+ {
+   "name": "Sceptile",
+   "id": 282,
+   "hint": [
+      "It lovingly raises trees in its forest.",
+      "It agilely leaps about the branches of trees.",
+      "It has leaves growing on its body.",
+      "It is a Forest Pokémon."
+   ]
+},
+ {
+   "name": "Grovyle",
+   "id": 281,
+   "hint": [
+      "Its protective colors hide it in grass.",
+      "It moves extremely quickly.",
+      "It has sharp scythes on its forearms.",
+      "It is a Mantis Pokémon."
+   ]
+},
+ {
+   "name": "Squirtle",
+   "id": 7,
+   "hint": [
+      "It has a shell.",
+      "It swims.",
+      "It withdraws into its shell when endangered.",
+      "It is a Tiny Turtle Pokémon."
+   ]
+},
+ {
+   "name": "Shiftry",
+   "id": 303,
+   "hint": [
+      "It lives quietly deep in forests.",
+      "It can whip up powerful gusts of wind.",
+      "It holds large fans.",
+      "It is a Wicked Pokémon."
+   ]
+},
+ {
+   "name": "Shieldon",
+   "id": 445,
+   "hint": [
+      "Its facial hide is extremely hard.",
+      "It polishes its face by rubbing it against tree trunks.",
+      "It is weak to attacks from behind.",
+      "It is a Shield Pokémon."
+   ]
+},
+ {
+   "name": "Seedot",
+   "id": 301,
+   "hint": [
+      "The more water it drinks, the glossier its body becomes.",
+      "It attaches the top of its head to a branch, then dangles.",
+      "It looks just like an acorn when it is dangling from a branch of a tree.",
+      "It is an Acorn Pokémon."
+   ]
+},
+ {
+   "name": "Beldum",
+   "id": 406,
+   "hint": [
+      "Instead of blood, a powerful magnetic force circulates in its body.",
+      "To sleep, it anchors itself to a cliff using the hooks on its backside.",
+      "It uses magnetic waves to converse with its kind.",
+      "It is an Iron Ball Pokémon."
+   ]
+},
+ {
+   "name": "Chikorita",
+   "id": 152,
+   "hint": [
+      "It loves to sunbathe.",
+      "It can determine the temperature and humidity.",
+      "It has a leaf on its head.",
+      "It is a Leaf Pokémon."
+   ]
+},
+ {
+   "name": "Doduo",
+   "id": 84,
+   "hint": [
+      "It lives on a grassy plain with a clear field of vision.",
+      "Its fast running makes up for its poor flying.",
+      "It has two heads.",
+      "It is a Twin Bird Pokémon."
+   ]
+},
+ {
+   "name": "Togepi",
+   "id": 175,
+   "hint": [
+      "It is considered a symbol of good luck.",
+      "It has a shell.",
+      "Its shell is said to be filled with joy.",
+      "It is a Spike Ball Pokémon."
+   ]
+},
+ {
+   "name": "Torterra",
+   "id": 424,
+   "hint": [
+      "It migrates in search of water.",
+      "Its back is huge.",
+      "Small Pokémon make nests on its back.",
+      "It is a Continent Pokémon."
+   ]
+},
+ {
+   "name": "Turtwig",
+   "id": 422,
+   "hint": [
+      "The shell on its back is made of soil.",
+      "It photosynthesizes with its body, creating oxygen.",
+      "The leaf on its head wilts if it is thirsty.",
+      "It is a Tiny Leaf Pokémon."
+   ]
+},
+ {
+   "name": "Slakoth",
+   "id": 315,
+   "hint": [
+      "It loafs around motionlessly.",
+      "It is rarely seen in motion.",
+      "Seeing it is enough to make others drowsy.",
+      "It is a Slacker Pokémon."
+   ]
+},
+ {
+   "name": "Nidoqueen",
+   "id": 31,
+   "hint": [
+      "Its body is covered by stiff, needlelike scales.",
+      "Its hard scales provide strong protection.",
+      "It uses its tough, scaly body to seal its nest and protect its young.",
+      "It is a Drill Pokémon."
+   ]
+},
+ {
+   "name": "Meowth",
+   "id": 52,
+   "hint": [
+      "It loves anything that shines.",
+      "It is fascinated by round objects.",
+      "When it spots something shiny, the gold coin on its head shines too.",
+      "It is a Scratch Cat Pokémon."
+   ]
+},
+ {
+   "name": "Glameow",
+   "id": 473,
+   "hint": [
+      "It is very fickle.",
+      "It claws if it is displeased.",
+      "With its sharp glare, it puts foes into a mild hypnotic state.",
+      "It is a Catty Pokémon."
+   ]
+},
+ {
+   "name": "Politoed",
+   "id": 186,
+   "hint": [
+      "Whenever three or more get together, they start singing.",
+      "Its song sounds like bellowing.",
+      "Its echoing cry attracts [CS:N]Poliwag[CR] and [CS:N]Poliwhirl[CR].",
+      "It is a Frog Pokémon."
+   ]
+},
+ {
+   "name": "Marshtomp",
+   "id": 287,
+   "hint": [
+      "Its well-developed hind legs let it stand upright.",
+      "It plays in mud on beaches when the tide is out.",
+      "It burrows into dirt to sleep.",
+      "It is a Mud Fish Pokémon."
+   ]
+},
+ {
+   "name": "Camerupt",
+   "id": 351,
+   "hint": [
+      "It has humps on its back.",
+      "The humps are said to be transformed bones.",
+      "The humps sometimes erupt with lava.",
+      "It is an Eruption Pokémon."
+   ]
+},
+ {
+   "name": "Typhlosion",
+   "id": 157,
+   "hint": [
+      "It creates heat shimmers to hide itself.",
+      "The heat shimmers are created with intense fire.",
+      "It rubs its blazing fur together to cause explosions.",
+      "It is a Volcano Pokémon."
+   ]
+},
+ {
+   "name": "Blaziken",
+   "id": 285,
+   "hint": [
+      "It has incredibly strong legs.",
+      "It looses flames from its wrist when faced with a tough foe.",
+      "The tougher the foe, the more intensely its wrists burn.",
+      "It is a Blaze Pokémon."
+   ]
+},
+ {
+   "name": "Lombre",
+   "id": 299,
+   "hint": [
+      "It gets active after dusk.",
+      "Its body is covered by a slippery, slimy film.",
+      "It feels horribly unpleasant to be touched by its slimy hands.",
+      "It's a Jolly Pokémon."
+   ]
+},
+ {
+   "name": "Grotle",
+   "id": 423,
+   "hint": [
+      "It lives along water in forests.",
+      "It has a shell.",
+      "In the daytime, it leaves the forest to sunbathe its tree-covered shell.",
+      "It is a Grove Pokémon."
+   ]
+},
+ {
+   "name": "Pikachu",
+   "id": 25,
+   "hint": [
+      "It looses electricity if it is endangered.",
+      "It stores electricity in the pouches on its cheeks.",
+      "It sometimes discharges electricity when it is dozy after waking up.",
+      "It is a Mouse Pokémon."
+   ]
+},
+ {
+   "name": "Chimchar",
+   "id": 425,
+   "hint": [
+      "It agilely scales steep cliffs.",
+      "Its rear end is on fire.",
+      "The fire on its rear end goes out when it sleeps.",
+      "It is a Chimp Pokémon."
+   ]
+},
+ {
+   "name": "Charmander",
+   "id": 4,
+   "hint": [
+      "It prefers hot things.",
+      "A flame burns at the tip of its tail.",
+      "Its tail burns intensely if it is healthy.",
+      "It is a Lizard Pokémon."
+   ]
+},
+ {
+   "name": "Cyndaquil",
+   "id": 155,
+   "hint": [
+      "It has a timid nature.",
+      "It shoots flames out of its back.",
+      "If it is startled, the flames on its back burn more vigorously.",
+      "It is a Fire Mouse Pokémon."
+   ]
+},
+ {
+   "name": "Ivysaur",
+   "id": 2,
+   "hint": [
+      "Exposure to sunlight makes it stronger.",
+      "It has a bud on its back.",
+      "When the bud begins to expand, it looses a sweet scent.",
+      "It's a Seed Pokémon."
+   ]
+},
+ {
+   "name": "Bulbasaur",
+   "id": 1,
+   "hint": [
+      "Its body grows in size with the seed.",
+      "There is a seed on its back.",
+      "It grows by drawing nutrients from the seed on its back for a short while after hatching.",
+      "It is a Seed Pokémon."
+   ]
+},
+ {
+   "name": "Venusaur",
+   "id": 3,
+   "hint": [
+      "Exposure to sunlight fills it with energy.",
+      "There is a flower growing on its back.",
+      "After a rainy day, the flower on its back smells stronger.",
+      "It is a Seed Pokémon."
+   ]
+},
+ {
+   "name": "Bayleef",
+   "id": 153,
+   "hint": [
+      "There is a leaf on its head.",
+      "Its neck is ringed by buds.",
+      "The buds give off a spicy aroma.",
+      "It is a Leaf Pokémon."
+   ]
+},
+ {
+   "name": "Heracross",
+   "id": 241,
+   "hint": [
+      "It gathers in forests to search for tree sap, its favorite food.",
+      "It is extremely strong.",
+      "It flings foes using its strength and mighty horn.",
+      "It is a Single Horn Pokémon."
+   ]
+},
+ {
+   "name": "Persian",
+   "id": 53,
+   "hint": [
+      "It has a vicious temperament.",
+      "Its fur has many admirers.",
+      "It has a gem on its forehead.",
+      "It is a Classy Cat Pokémon."
+   ]
+},
+ {
+   "name": "Hoothoot",
+   "id": 163,
+   "hint": [
+      "It begins hooting at precisely the same time every day.",
+      "It always stands on one foot.",
+      "It switches its standing foot so quickly, it can't be seen.",
+      "It is an Owl Pokémon."
+   ]
+},
+ {
+   "name": "Poochyena",
+   "id": 289,
+   "hint": [
+      "It has a persistent nature.",
+      "At first sight, it takes a bite out of anything that moves.",
+      "A distinguishing feature is how large its fangs are compared to its body.",
+      "It is a Bite Pokémon."
+   ]
+},
+ {
+   "name": "Prinplup",
+   "id": 429,
+   "hint": [
+      "It lives alone, away from others.",
+      "Its wings deliver wicked blows.",
+      "It searches for prey in icy seas.",
+      "It is a Penguin Pokémon."
+   ]
+},
+ {
+   "name": "Piplup",
+   "id": 428,
+   "hint": [
+      "Its thick down guards it from cold.",
+      "It lives along shores in northern countries.",
+      "It is a skilled swimmer.",
+      "It is a Penguin Pokémon."
+   ]
+},
+ {
+   "name": "Pidgey",
+   "id": 16,
+   "hint": [
+      "It lives among tall grasses and in forests.",
+      "It chases off foes by flapping up sand.",
+      "It is docile, but it can strike back ferociously.",
+      "It is a Tiny Bird Pokémon."
+   ]
+},
+ {
+   "name": "Ponyta",
+   "id": 77,
+   "hint": [
+      "It is very weak at birth. It can barely walk.",
+      "Its hooves are extremely hard.",
+      "Its mane is made of fire.",
+      "It is a Fire Horse Pokémon."
+   ]
+},
+ {
+   "name": "Porygon",
+   "id": 137,
+   "hint": [
+      "It is programmed with only basic motions.",
+      "It can't perform motions that have not been programmed.",
+      "It is capable of moving freely in cyberspace.",
+      "It is a Virtual Pokémon."
+   ]
+},
+ {
+   "name": "Quilava",
+   "id": 156,
+   "hint": [
+      "It is fully covered by nonflammable fur.",
+      "It keeps foes at bay with intense flames.",
+      "It attacks with the fire on its back.",
+      "It is a Volcano Pokémon."
+   ]
+},
+ {
+   "name": "Bellsprout",
+   "id": 69,
+   "hint": [
+      "Its body is very skinny.",
+      "It prefers hot and humid places.",
+      "It plants its feet deep underground to replenish water.",
+      "It is a Flower Pokémon."
+   ]
+},
+ {
+   "name": "Mudkip",
+   "id": 286,
+   "hint": [
+      "It has a fin on its head.",
+      "In water, it breathes using the gills on its cheeks.",
+      "It has the strength to heft boulders.",
+      "It is a Mud Fish Pokémon."
+   ]
+},
+ {
+   "name": "Meganium",
+   "id": 154,
+   "hint": [
+      "Being close to it is refreshing, as if relaxing in a sunny forest.",
+      "It has flower petals around its neck.",
+      "Its breath can revive dead plants and flowers.",
+      "It is an Herb Pokémon."
+   ]
+},
+ {
+   "name": "Monferno",
+   "id": 426,
+   "hint": [
+      "It uses ceilings and walls to launch aerial attacks.",
+      "Its fiery tail is only one of its weapons.",
+      "It stretches the fire on its tail to make itself appear bigger.",
+      "It is a Playful Pokémon."
+   ]
+},
+ {
+   "name": "Murkrow",
+   "id": 198,
+   "hint": [
+      "It hides any shiny object it finds in a secret location.",
+      "It is said to be the bearer of ill fortune.",
+      "It is believed to bring misfortune to those who see it at night.",
+      "It is a Darkness Pokémon."
+   ]
+},
+ {
+   "name": "Vigoroth",
+   "id": 316,
+   "hint": [
+      "It is always itching to go on a wild rampage.",
+      "It is simply incapable of remaining still.",
+      "Its stress level rises if it can't be moving constantly.",
+      "It is a Wild Monkey Pokémon."
+   ]
+},
+ {
+   "name": "Raichu",
+   "id": 26,
+   "hint": [
+      "It turns aggressive if it has too much electricity charged in its electric pouches.",
+      "It has electric pouches in its cheeks.",
+      "It discharges electricity by planting its tail in the ground.",
+      "It is a Mouse Pokémon."
+   ]
+},
+ {
+   "name": "Swampert",
+   "id": 288,
+   "hint": [
+      "It predicts storms by sensing changes in the sounds of waves and tidal winds with its fins.",
+      "It protects its nest from storms by piling up boulders.",
+      "With one swing of its thick arm, it can batter down its foe.",
+      "It is a Mud Fish Pokémon."
+   ]
+},
+ {
+   "name": "Charmeleon",
+   "id": 5,
+   "hint": [
+      "It has vicious claws.",
+      "The tip of its tail is burning.",
+      "If it becomes agitated in battle, the flame on its tail burns more intensely.",
+      "It is a Flame Pokémon."
+   ]
+},
+ {
+   "name": "Charizard",
+   "id": 6,
+   "hint": [
+      "Its fire burns hotter if it has experienced harsh battles.",
+      "It flies high on its wings.",
+      "When breathing intense fire, the tip of its tail also flares ferociously.",
+      "It is a Flame Pokémon."
+   ]
+},
+ {
+   "name": "Ledyba",
+   "id": 165,
+   "hint": [
+      "It is very timid and swarms with others right away.",
+      "In cold weather, they cluster to keep each other warm.",
+      "It secretes an aromatic fluid from its leg to indicate its location.",
+      "It is a Five Star Pokémon."
+   ]
+},
+ {
+   "name": "Combusken",
+   "id": 284,
+   "hint": [
+      "It toughens up its legs by running through fields and mountains.",
+      "It emits sharp cries to intimidate foes.",
+      "It battles with intense fire and outstandingly destructive kicks.",
+      "It is a Young Fowl Pokémon."
+   ]
+},
+ {
+   "name": "Totodile",
+   "id": 158,
+   "hint": [
+      "It is small, but rough and tough.",
+      "Its well-developed jaws are powerful and capable of crushing anything.",
+      "It has the habit of biting anything.",
+      "It is a Big Jaw Pokémon."
+   ]
+},
+ {
+   "name": "Starly",
+   "id": 431,
+   "hint": [
+      "It flocks in great numbers.",
+      "Though small, it flaps its wings with great power.",
+      "Its cries are very strident.",
+      "It is a Starling Pokémon."
+   ]
+},
+ {
+   "name": "Ninetales",
+   "id": 38,
+   "hint": [
+      "It is very intelligent and persistent.",
+      "It is said to live for a thousand years.",
+      "It has nine tails.",
+      "It is a Fox Pokémon."
+   ]
+},
+ {
+   "name": "Absol",
+   "id": 391,
+   "hint": [
+      "It is said to live in mountainous areas.",
+      "It rarely travels to the base of mountains.",
+      "It appears before people only to warn them of impending danger.",
+      "It is a Disaster Pokémon."
+   ]
+},
+ {
+   "name": "Phanpy",
+   "id": 258,
+   "hint": [
+      "It is strong despite its compact size.",
+      "It likes to dig holes in riverbanks.",
+      "It uses its long nose to shower itself.",
+      "It is a Long Nose Pokémon."
+   ]
+},
+ {
+   "name": "Shinx",
+   "id": 438,
+   "hint": [
+      "Its body shines if endangered.",
+      "Its forelegs have a muscle-based system of generating electricity.",
+      "Its fur dazzles when in danger, and it flees while the foe is momentarily blinded.",
+      "It is a Flash Pokémon."
+   ]
+},
+ {
+   "name": "Rhyhorn",
+   "id": 111,
+   "hint": [
+      "Its body is clad in a thick hide.",
+      "Its bones are said to be very strong and solid.",
+      "Once it starts charging, it won't stop until it falls asleep.",
+      "It is a Spikes Pokémon."
+   ]
+},
+ {
+   "name": "Vibrava",
+   "id": 357,
+   "hint": [
+      "It violently shudders its wings, generating ultrasonic waves.",
+      "Its ultrasonic waves can make enemies faint.",
+      "Its ultrasonic waves are so strong they can induce headaches.",
+      "It is a Vibration Pokémon."
+   ]
+},
+ {
+   "name": "Trapinch",
+   "id": 356,
+   "hint": [
+      "It makes a pit in desert sand and waits at the bottom for prey to come tumbling down.",
+      "Its large jaw is strong enough to crush rocks.",
+      "It can go up to a week without water.",
+      "It is an Ant Pit Pokémon."
+   ]
+},
+ {
+   "name": "Electrike",
+   "id": 337,
+   "hint": [
+      "It stores electricity in its fur.",
+      "It stimulates its muscles using electricity to heighten its reaction speed.",
+      "It runs so fast it is merely a blur.",
+      "It is a Lightning Pokémon."
+   ]
+},
+ {
+   "name": "Ninjask",
+   "id": 319,
+   "hint": [
+      "It moves very quickly.",
+      "It moves so fast that it cannot be seen.",
+      "It congregates around tree sap.",
+      "It is a Ninja Pokémon."
+   ]
+},
+ {
+   "name": "Donphan",
+   "id": 259,
+   "hint": [
+      "It has very large, long tusks.",
+      "Its body is clad in a thick hide.",
+      "It attacks by curling up, then rolling into its foe.",
+      "It is an Armor Pokémon."
+   ]
+},
+ {
+   "name": "Spinda",
+   "id": 355,
+   "hint": [
+      "It spins around when it walks.",
+      "Its erratic step fouls the aim of foes.",
+      "It has spots.",
+      "It is a Spot Panda Pokémon."
+   ]
+},
+ {
+   "name": "Breloom",
+   "id": 314,
+   "hint": [
+      "It uses fancy footwork to get close to enemies.",
+      "Its arms stretch when it throws punches.",
+      "The seeds on its tail are made of hard-packed poison.",
+      "It is a Mushroom Pokémon."
+   ]
+},
+ {
+   "name": "Linoone",
+   "id": 292,
+   "hint": [
+      "It can run very quickly to charge enemies.",
+      "It's very difficult for it to take even the slightest curve.",
+      "If it doesn't stop quickly, it cannot turn.",
+      "It is a Rushing Pokémon."
+   ]
+},
+ {
+   "name": "Hitmontop",
+   "id": 264,
+   "hint": [
+      "It fights while spinning like a top.",
+      "It spins on its head to time its attacks against enemies.",
+      "It kicks while spinning.",
+      "It is a Handstand Pokémon."
+   ]
+},
+ {
+   "name": "Mankey",
+   "id": 56,
+   "hint": [
+      "It is said to live in treetop colonies.",
+      "It's always angry.",
+      "If one becomes enraged, the whole colony rampages for no reason.",
+      "It is a Pig Monkey Pokémon."
+   ]
+},
+ {
+   "name": "Riolu",
+   "id": 489,
+   "hint": [
+      "Its body is lithe yet powerful.",
+      "It is said to be able to crest three mountains and cross two canyons in one night.",
+      "It emanates an aura from its body.",
+      "It is an Emanation Pokémon."
+   ]
+},
+ {
+   "name": "Lucario",
+   "id": 490,
+   "hint": [
+      "It has the ability to sense auras.",
+      "It is a Fighting- and Steel-type Pokémon.",
+      "It can read others' thoughts and movements from their auras.",
+      "It is an Aura Pokémon."
+   ]
+},
+ {
+   "name": "Luxio",
+   "id": 439,
+   "hint": [
+      "Its claws loose electricity with enough voltage to cause fainting.",
+      "They live in small groups.",
+      "It communicates with rhythmic electric pulses from its claws.",
+      "It is a Spark Pokémon."
+   ]
+},
+ {
+   "name": "Luxray",
+   "id": 440,
+   "hint": [
+      "Its eyes gleam gold.",
+      "It has eyes that can see through anything.",
+      "It spots and captures prey hiding behind objects.",
+      "It is a Gleam Eyes Pokémon."
+   ]
+},
+ {
+   "name": "Vulpix",
+   "id": 37,
+   "hint": [
+      "It controls balls of fire.",
+      "It has six tails.",
+      "As it grows, its six tails split from their tips to make more tails.",
+      "It is a Fox Pokémon."
+   ]
+},
+ {
+   "name": "Gallade",
+   "id": 517,
+   "hint": [
+      "It is a master of courtesy.",
+      "It fights using extending swords on its elbows.",
+      "It is a master of swordsmanship.",
+      "It is a Blade Pokémon."
+   ]
+},
+ {
+   "name": "Wynaut",
+   "id": 392,
+   "hint": [
+      "It is always smiling.",
+      "It loves eating sweet fruit.",
+      "It grows strong by pushing up against others as part of a group.",
+      "It is a Bright Pokémon."
+   ]
+},
+ {
+   "name": "Nidoking",
+   "id": 34,
+   "hint": [
+      "Its large limbs and tail boast of its intense strength.",
+      "Its skin is as hard as a rock, and it has a long horn.",
+      "Its horn is poisonous.",
+      "It is a Drill Pokémon."
+   ]
+}
+]
