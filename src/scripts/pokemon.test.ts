@@ -1,4 +1,4 @@
-import { getPokemon, POKEMON_COUNT } from "./pokemon";
+import { generateDailySeed, generatePokemonForRound, getPokemon, POKEMON_COUNT } from "./pokemon";
 import { describe, expect, test } from "vitest";
 import { readdirSync } from "fs";
 
@@ -24,3 +24,20 @@ describe.concurrent("Loading Pokemon", async () => {
 
 })
 
+describe("Game", () => {
+    test("Generate seed for today", () => {
+        expect(generateDailySeed()).toBeTypeOf('number')
+    })
+
+    test("Check seeds for duplicates for the next 365 days", () => {
+        let seedsForNextYear = []
+        for (let i = 0; i < 365; i++)
+            seedsForNextYear.push(generateDailySeed(i))
+        let seedsSet = new Set(seedsForNextYear)
+        expect(seedsForNextYear.length - seedsSet.size).toBeLessThan(5)
+    })
+    
+    test("Generate pokemon for round", () => {
+        expect(generatePokemonForRound()).toBe(0)
+    })
+})
