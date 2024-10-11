@@ -7,5 +7,8 @@ export default defineConfig({
   base: '/sentryduty',
   build: {
     target: 'esnext'
+  },
+  optimizeDeps: {
+    exclude: ['vue-demi']
   }
 })
