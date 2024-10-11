@@ -7,6 +7,12 @@ body {
 }
 
 
+@font-face {
+    font-family: pmd;
+    src: url(./pmdFont.ttf);
+    size-adjust: 175%;
+}
+
 .eosBorder {
     @apply border-transparent border-[10px] border-solid;
     border-image: url(../images/border.png) 7 round;
@@ -15,4 +21,8 @@ body {
 /* Used to properly scale pixel art */
 .pixelated {
     image-rendering: pixelated;
+}
+
+dialog::backdrop {
+    @apply bg-black bg-opacity-90 backdrop-sepia;
 }

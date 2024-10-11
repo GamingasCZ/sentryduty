@@ -91,8 +91,6 @@ const addScore = () => {
 
 const base = import.meta.env.BASE_URL
 
-
-// const audio = ref()
 onMounted(() => {
     startTimer()
 })
@@ -101,12 +99,14 @@ onMounted(() => {
 
 <template>
     <main class="flex absolute inset-0 flex-col justify-center items-center">
-        <!-- <audio ref="audio" loop :src="base + '/sentryduty.ogg'" /> -->
         <meter min="0" :max="ROUND_TIME_SEC" :value="timeLeft"></meter>
         <p class="text-yellow-400">Round: {{ currentRound+1 }}/{{ ROUNDS }}</p>
         <p class="text-yellow-400">Score: {{ SCORE }}</p>
         <p class="text-white">{{ pickedHint == -1 ? NO_FOOT_HELP : hintArray[pickedHint] }}</p>
-        <img :src="base + `/footprints/${POKEMON[GENERATED_POKEMON[0][currentRound][answerIndex] - 1].id}.png`" class="w-16 invert pixelated" alt="">
+        <div class="relative w-64 aspect-square">
+            <img :src="base + `/footprints/${POKEMON[GENERATED_POKEMON[0][currentRound][answerIndex] - 1].id}.png`" class="absolute top-1/2 left-1/2 z-10 w-32 -translate-x-1/2 -translate-y-1/2 pixelated" alt="">
+            <div :style="{backgroundImage: 'radial-gradient(white 15%, transparent 70%)'}" class="absolute inset-0"></div>
+        </div>
         <div class="grid grid-cols-2 gap-8">
             <PokemonCard
                 v-for="pokemon in GENERATED_POKEMON[0][currentRound]"

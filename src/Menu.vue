@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref } from 'vue';
+import CreditsPopup from './components/CreditsPopup.vue';
 import { DIFFICULTY } from './scripts/pokemon';
 import strings from './strings';
 
@@ -6,73 +8,89 @@ const emit = defineEmits<{
     (e: "startGame"): void
 }>()
 
+const creditsOpen = ref(false)
+
 </script>
 
 <template>
-    <main class="px-2 w-full max-w-2xl text-white">
+    <CreditsPopup @close="creditsOpen = false" :open="creditsOpen" />
+
+    <main class="px-2 py-8 min-h-full w-full font-[pmd] max-w-2xl text-white">
         <h1 class="mb-4 text-5xl font-extrabold text-center">Sentry Duty</h1>
         <section class="flex flex-col bg-black bg-opacity-80 rounded-xl backdrop-blur-md eosBorder">
-            <div class="px-8">
+            <div class="flex flex-col items-center my-4">
+                <header class="flex gap-12 justify-between w-max">
+                    <button><img src="./images/arrow2.svg" class="w-8" alt=""></button>
+                    <span class="text-2xl">Day 1</span>
+                    <button><img src="./images/arrow2.svg" class="w-8 -scale-x-100" alt=""></button>
+                </header>
+                <div class="text-center opacity-40">
+                    <img src="./images/notPlayedYet.webp" class="my-4" alt="">
+                    <span>You haven't played today yet...</span>
+                </div>
+            </div>
+
+            <div class="px-2 my-4 sm:px-8">
                 <table class="w-full text-center">
-                    <caption class="text-2xl text-left">Difficulty</caption>
+
+                    <caption class="mb-2 text-2xl text-left">
+                        <img src="./images/hry.svg" class="inline mr-4 mb-1 w-6" alt="">
+                        <span>Difficulty</span>
+                    </caption>
+
                     <tbody>
                         <tr class="">
-                            <td class="py-1 text-xl text-blue-300 border-2 border-white border-opacity-40 hover:bg-blue-950">
-                                <button @click="DIFFICULTY = 0">{{ strings.difficulties[0] }}</button>
+                            <td :class="{'bg-blue-950': DIFFICULTY == 0}" class="py-1 text-xl text-blue-300 border-2 border-white border-opacity-40 active:brightness-125 hover:bg-blue-950">
+                                <button class="w-full h-full" @click="DIFFICULTY = 0">{{ strings.difficulties[0] }}</button>
                             </td>
-                            <td class="py-1 text-xl text-red-300 border-2 border-white border-opacity-40 hover:bg-red-950">
-                                <button @click="DIFFICULTY = 1">{{ strings.difficulties[1] }}</button>
+                            <td :class="{'bg-red-950': DIFFICULTY == 1}" class="py-1 text-xl text-red-300 border-2 border-white border-opacity-40 active:brightness-125 hover:bg-red-950">
+                                <button class="w-full h-full" @click="DIFFICULTY = 1">{{ strings.difficulties[1] }}</button>
                             </td>
-                            <td class="py-1 text-xl text-red-600 border-2 border-white border-opacity-40 hover:text-black hover:bg-red-900">
-                                <button @click="DIFFICULTY = 2">{{ strings.difficulties[2] }}</button>
+                            <td :class="{'bg-red-900': DIFFICULTY == 2}" class="py-1 text-xl text-red-600 border-2 border-white border-opacity-40 active:brightness-125 hover:text-black hover:bg-red-900">
+                                <button class="w-full h-full" @click="DIFFICULTY = 2">{{ strings.difficulties[2] }}</button>
                             </td>
                         </tr>
                     </tbody>
+
                 </table>
                 <p class="mt-1 text-sm">{{ strings.difficultyHelp[DIFFICULTY] }}</p>
             </div>
 
-            <div class="grid grid-cols-2 gap-8 p-8">
-                <button @click="emit('startGame')" class="p-2 text-3xl font-bold text-green-300 bg-green-700 bg-opacity-40 rounded-md border-2 border-green-300">Play</button>
-                <button class="p-2 text-xl text-yellow-600 bg-yellow-900 bg-opacity-10 rounded-md border-2 border-yellow-600">Highscores</button>
+            <section class="px-2 my-8 sm:px-8">
+                <header class="flex items-center cursor-pointer">
+                    <img src="./images/gear.svg" class="mr-4 w-6" alt="">
+                    <span class="text-2xl">Customization</span>
+                    <img src="./images/arrow.svg" class="mr-2 ml-auto w-3 scale-x-75 rotate-90" alt="">
+                </header>
+                <hr class="mt-2 opacity-40">
+
+                <div class="flex gap-2 p-2 bg-black bg-opacity-20 max-sm:flex-col">
+                    <div class="flex gap-2">
+                        <img class="p-1 h-9 rounded-md border" src="./images/bp.png">
+                        <input class="py-1 pl-4 w-full bg-transparent rounded-md border sm:mr-8"type="text" placeholder="Hero's Name">
+                    </div>
+                    <div class="flex gap-2">
+                        <img class="p-1 h-9 rounded-md border" src="./images/bp.png">
+                        <input class="py-1 pl-4 w-full bg-transparent rounded-md border"type="text" placeholder="Partner's Name">
+                    </div>
+                </div>
+            </section>
+
+            <div class="play">
+                <button @click="creditsOpen = true" class="p-2 text-lg bg-opacity-10 rounded-md text-slate-300">Credits</button>
+                <button @click="emit('startGame')" class="p-2 text-4xl font-black text-green-300 bg-green-700 bg-opacity-40 rounded-md border-2 border-green-300">Play</button>
+                <button class="p-2 text-lg text-yellow-500 bg-opacity-10 rounded-md">Highscores</button>
             </div>
         </section>
-        <footer class="p-2 mt-8 bg-black bg-opacity-80 rounded-xl backdrop-blur-md eosBorder">
-            <h2 class="my-2 text-2xl text-center">Credits</h2>
-            <div class="grid grid-rows-2 grid-flow-col gap-x-2 text-center">
-
-                <span>Portraits</span>
-                <a target="_blank" href="https://github.com/PMDCollab/SpriteCollab" class="py-1 bg-yellow-900 bg-opacity-30 rounded-md border-2 border-yellow-200">
-                    <img src="./images/sr.png" class="inline w-6" alt="">
-                    Sprite Repository
-                </a>
-                
-                <span>Hints</span>
-                <a target="_blank" href="https://skytemple.org/" class="bg-orange-900 bg-opacity-30 rounded-md border-2 border-orange-200">
-                    <img src="./images/st.png" class="inline w-6" alt="">
-                    SkyTemple
-                </a>
-                
-                <span>Footprints</span>
-                <a target="_blank" href="https://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_footprint" class="bg-lime-900 bg-opacity-30 rounded-md border-2 border-lime-200">
-                    <img src="./images/bp.png" class="inline w-6" alt="">
-                    Bulbapedia
-                </a>
-            </div>
-            <h3 class="mt-4 text-xl text-center">Created by GamingasCZ 2024</h3>
-            <div class="grid grid-cols-2 gap-2 text-center">
-                <a target="_blank" href="https://gamingas.cz" class="py-1 bg-green-900 bg-opacity-30 rounded-md border-2 border-green-200">
-                    <img src="./images/gg.png" class="inline w-6" alt="">
-                    My Website
-                </a>
-                <a target="_blank" href="https://github.com/GamingasCZ/sentryduty" class="py-1 bg-opacity-30 rounded-md border-2 bg-slate-900 border-slate-200">
-                    <img src="./images/gh.png" class="inline w-6" alt="">
-                    Source Code
-                </a>
-            </div>
-            <p class="mt-4 text-xs text-center">All sounds and Pokémon sprites are owned by Spike Chunsoft Ltd.<br>
-                Pokémon is a registered trademark of Nintendo/Creatures Inc./GAME FREAK Inc.<br>
-                This fan game is in no way affiliated the mentioned entites.</p>
-        </footer>
     </main>
 </template>
+
+<style>
+
+.play {
+    @apply grid [grid-template-areas:"play_play"] sm:[grid-template-areas:"a_play"] gap-4 grid-cols-2 sm:grid-cols-3 justify-center p-4;
+}
+
+.play > button:nth-of-type(2) {grid-area: play;}
+
+</style>
