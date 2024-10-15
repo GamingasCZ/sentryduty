@@ -5,6 +5,7 @@ import { DIFFICULTY } from './scripts/pokemon';
 import strings from './strings';
 import sfx from "/sfx/sfx.ogg?url";
 import { useSound } from "@vueuse/sound";
+import MenuBackground from './components/MenuBackground.vue';
 
 const emit = defineEmits<{
     (e: "startGame"): void
@@ -27,6 +28,8 @@ const { play } = useSound(sfx, {
 
 <template>
     <CreditsPopup @close="creditsOpen = false" :open="creditsOpen" />
+
+    <MenuBackground />
 
     <main class="px-2 py-8 min-h-max w-full font-[pmd] max-w-2xl text-white">
         <h1 class="mb-4 text-5xl font-extrabold text-center">Sentry Duty</h1>

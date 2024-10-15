@@ -8,8 +8,8 @@ const props = defineProps<{
 const emit = defineEmits(['close'])
 
 const main = ref<HTMLDialogElement>()
-watch(() => props.open, () => {
-    if (main) {
+watch(() => props.open, (_, nowOpen) => {
+    if (main && !nowOpen) {
         main.value?.showModal()
     }
 })
