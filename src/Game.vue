@@ -2,6 +2,7 @@
 import PokemonCard from "./components/PokemonCard.vue"
 import {computed, onMounted, ref} from "vue"
 import POKEMON, { generatePokemonForRound, ROUND_TIME_SEC, ROUNDS } from "./scripts/pokemon";
+import { gameMusic } from "./scripts/sounds";
 
 const emit = defineEmits<{
     (e: "gameFinished", result: {score: number}): void
@@ -91,7 +92,11 @@ const addScore = () => {
 
 const base = import.meta.env.BASE_URL
 
-onMounted(() => {
+var music: Howl
+onMounted(async () => {
+    music = await gameMusic()
+    music.play("main")
+    music.on("end", () => {music.loop(); music.play("loop")})
     startTimer()
 })
 
