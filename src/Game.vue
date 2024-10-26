@@ -2,7 +2,7 @@
 import PokemonCard from "./components/PokemonCard.vue"
 import {computed, onMounted, ref} from "vue"
 import POKEMON, { generatePokemonForRound, ROUND_TIME_SEC, ROUNDS } from "./scripts/pokemon";
-import { gameMusic } from "./scripts/sounds";
+import { gameMusic, playMusic } from "./scripts/sounds";
 
 const emit = defineEmits<{
     (e: "gameFinished", result: {score: number}): void
@@ -95,8 +95,9 @@ const base = import.meta.env.BASE_URL
 var music: Howl
 onMounted(async () => {
     music = await gameMusic()
-    music.play("main")
-    music.on("end", () => {music.loop(); music.play("loop")})
+    music.loop()
+    music.on("end", () => {playMusic(music, "loop")})
+    playMusic(music, "main")
     startTimer()
 })
 
@@ -109,7 +110,7 @@ onMounted(async () => {
         <p class="text-yellow-400">Score: {{ SCORE }}</p>
         <p class="text-white">{{ pickedHint == -1 ? NO_FOOT_HELP : hintArray[pickedHint] }}</p>
         <div class="relative w-64 aspect-square">
-            <img :src="base + `/footprints/${POKEMON[GENERATED_POKEMON[0][currentRound][answerIndex] - 1].id}.png`" class="absolute top-1/2 left-1/2 z-10 w-32 -translate-x-1/2 -translate-y-1/2 pixelated" alt="">
+            <img :src="base + `/footprints/f${GENERATED_POKEMON[0][currentRound][answerIndex]}.png`" class="absolute top-1/2 left-1/2 z-10 w-32 -translate-x-1/2 -translate-y-1/2 pixelated" alt="">
             <div :style="{backgroundImage: 'radial-gradient(white 15%, transparent 70%)'}" class="absolute inset-0"></div>
         </div>
         <div class="grid grid-cols-2 gap-8">
