@@ -2,7 +2,11 @@
 module.exports = {
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      dropShadow: {
+        glow: "0px 0px 3px white"
+      }
+    },
   },
   plugins: [],
 }

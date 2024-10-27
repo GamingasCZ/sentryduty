@@ -28,17 +28,12 @@ watch(() => props.open, (_, nowOpen) => {
                         Sprite Repository
                     </a>
                     
-                    <span class="self-center">Hints</span>
+                    <span class="self-center">Hints & Footprints</span>
                     <a target="_blank" href="https://skytemple.org/" class="p-3 bg-orange-900 bg-opacity-30 rounded-md border-2 border-orange-200">
                         <img src="../images/st.png" class="inline mr-2 w-6" alt="">
                         SkyTemple
                     </a>
                     
-                    <span class="self-center">Footprints</span>
-                    <a target="_blank" href="https://bulbapedia.bulbagarden.net/wiki/List_of_Pok%C3%A9mon_by_footprint" class="p-3 bg-lime-900 bg-opacity-30 rounded-md border-2 border-lime-200">
-                        <img src="../images/bp.png" class="inline mr-2 w-6" alt="">
-                        Bulbapedia
-                    </a>
                 </div>
                 <h3 class="mt-12 mb-2 text-xl text-center">Created by GamingasCZ ♥ 2024</h3>
                 <div class="grid gap-2 text-center sm:grid-cols-2">

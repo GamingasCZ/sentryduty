@@ -13,6 +13,23 @@ body {
     size-adjust: 175%;
 }
 
+@keyframes hopAnim {
+    %0 {
+        @apply translate-y-0;    
+    }
+    50% {
+        @apply -translate-y-1;
+    }
+    100% {
+        @apply translate-y-0;
+    }
+}
+
+.hop {
+    animation: hopAnim 1100ms cubic-bezier(.13,.91,.21,.97) infinite;
+    image-rendering: pixelated;
+}
+
 .eosBorder {
     @apply border-transparent border-[10px] border-solid;
     border-image: url(../images/border.png) 7 round;
