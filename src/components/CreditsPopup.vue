@@ -19,7 +19,7 @@ watch(() => props.open, (_, nowOpen) => {
 <template>
     <dialog @close="emit('close')" @click="main?.close(); emit('close')" ref="main" class="z-20 p-8 text-white bg-black font-[pmd] bg-opacity-80 rounded-xl backdrop-blur-md eosBorder">
         <section @click.stop="">
-            <h3 class="my-4 text-lg text-center text-yellow-200">Credits</h3>
+            <h3 class="my-2 text-4xl font-bold text-center text-yellow-200">Credits</h3>
                 <div class="grid gap-x-4 text-center max-sm:gap-y-3 sm:grid-flow-col sm:grid-rows-2">
     
                     <span class="self-center">Portraits</span>
@@ -28,7 +28,7 @@ watch(() => props.open, (_, nowOpen) => {
                         Sprite Repository
                     </a>
                     
-                    <span class="self-center">Hints & Footprints</span>
+                    <span class="self-center">Hints, Footprints & Sprites|</span>
                     <a target="_blank" href="https://skytemple.org/" class="p-3 bg-orange-900 bg-opacity-30 rounded-md border-2 border-orange-200">
                         <img src="../images/st.png" class="inline mr-2 w-6" alt="">
                         SkyTemple

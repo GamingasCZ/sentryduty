@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
 import CreditsPopup from './components/CreditsPopup.vue';
-import POKEMON, { DIFFICULTY, getDaysRunningFor, STARTERS } from './scripts/pokemon';
+import POKEMON, { DIFFICULTY, getDaysRunningFor, siteStartDay, STARTERS } from './scripts/pokemon';
 import strings from './strings';
 import MenuBackground from './components/MenuBackground.vue';
 import { menu, playMusic, sounds, toggleVolume } from './scripts/sounds';
@@ -49,7 +49,7 @@ const selectDay = (skipBy: number) => {
 
 const dayText = computed(() => {
     switch (daySelected.value) {
-        case 0: return `Today - Day ${daySelected.value}`
+        case 0: return `Today - Day ${getDaysRunningFor()}`
         case -1: return `Yesterday`
             
         default:
@@ -82,20 +82,20 @@ const pickPokemon = (pickedPokemon: number) => {
         <section class="flex flex-col bg-black bg-opacity-80 rounded-xl backdrop-blur-md eosBorder">
             <div class="flex flex-col items-center my-4">
                 <header class="flex gap-12 justify-between w-max">
-                    <button :disabled="Math.abs(daySelected) >= daysRunningFor" class="disabled:opacity-20" @click="selectDay(-1)"><img src="./images/arrow2.svg" class="w-8" alt=""></button>
+                    <button :disabled="Math.abs(daySelected) >= daysRunningFor" class="disabled:opacity-20" @click="selectDay(-1)"><img height="32" src="./images/arrow2.svg" class="w-8" alt=""></button>
                     <span @click="daySelected = 0" :class="{'cursor-pointer hover:underline': daySelected != 0}" class="text-2xl">{{ dayText }}</span>
-                    <button :disabled="daySelected == 0" class="disabled:opacity-20" @click="selectDay(1)"><img src="./images/arrow2.svg" class="w-8 -scale-x-100" alt=""></button>
+                    <button :disabled="daySelected == 0" class="disabled:opacity-20" @click="selectDay(1)"><img height="32" src="./images/arrow2.svg" class="w-8 -scale-x-100" alt=""></button>
                 </header>
                 <div v-if="daySelected == 0" class="text-center opacity-40">
-                    <img src="./images/notPlayedYet.webp" class="my-4" alt="">
+                    <img height="160" src="./images/notPlayedYet.webp" class="my-4" alt="">
                     <!-- <span>Scores can't be saved without cookies!</span> -->
                     <span>You haven't played today yet...</span>
                 </div>
-                <div v-else class="text-center opacity-40">
+                <div v-else class="pt-8 text-center opacity-40">
                     <span>You haven't played that day...</span>
-                    <div>
-                        <button><img src="./images/view.svg">Answer</button>
-                        <button>Play</button>
+                    <div class="grid grid-cols-2 py-4 mb-6">
+                        <button class="flex flex-col items-center"><img class="w-20" src="./images/view.svg">Answer</button>
+                        <button class="flex flex-col items-center"><img class="w-20" src="./images/view.svg">Play</button>
                     </div>
                 </div>
             </div>
