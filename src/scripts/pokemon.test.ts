@@ -6,14 +6,18 @@ describe.concurrent("Loading Pokemon", async () => {
     let pokemon = await getPokemon()
     let portraitsDir = readdirSync("public/portraits")
     let footprintsDir = readdirSync("public/footprints")
+    let spriteDir = readdirSync("public/sprites")
 
     test("JSON structure, ensure Pokemon has a portrait and a footprint", () => {
+        let i = 1
         pokemon.forEach(pk => {
             expect(pk).toHaveProperty("name")
             expect(pk).toHaveProperty("id")
-            expect(portraitsDir).toContain(`${pk.id}.png`)
-            expect(footprintsDir).toContain(`${pk.id}.png`)
             expect(pk).toHaveProperty("hint")
+            expect(portraitsDir).toContain(`${pk.id}.webp`)
+            expect(footprintsDir).toContain(`${i}.webp`)
+            expect(spriteDir).toContain(`${pk.id}.webp`)
+            i += 1
         })
     })
 
@@ -43,8 +47,10 @@ describe("Game", () => {
             expect(round[0].length == round[1].length && round[0].length == ROUNDS).toBeTruthy()
         })
         test("Round has no duplicate choices", () => {
-            for (const r in round[0]) {
-                expect(new Set(r).size == r.length).toBeTruthy()
+
+            for (const r of round[0]) {
+                let roundChoiceArray = r as number[]
+                expect(new Set(roundChoiceArray).size == roundChoiceArray.length).toBeTruthy()
             }
         })
     })
