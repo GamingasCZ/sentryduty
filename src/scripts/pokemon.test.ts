@@ -42,15 +42,18 @@ describe("Game", () => {
     })
     
     describe("Generate Pokemon", () => {
-        let round = generatePokemonForRound()
+        let round = generatePokemonForRound(0)
         test("Round is valid", () => {
             expect(round[0].length == round[1].length && round[0].length == ROUNDS).toBeTruthy()
         })
-        test("Round has no duplicate choices", () => {
 
-            for (const r of round[0]) {
-                let roundChoiceArray = r as number[]
-                expect(new Set(roundChoiceArray).size == roundChoiceArray.length).toBeTruthy()
+        test("Round has no duplicate choices", () => {
+            for (let i = 0; i < 365; i++) {
+                let round = generatePokemonForRound(i)
+                for (const r of round[0]) {
+                    let roundChoiceArray = r as number[]
+                    expect(new Set(roundChoiceArray).size == roundChoiceArray.length).toBeTruthy()
+                }
             }
         })
     })

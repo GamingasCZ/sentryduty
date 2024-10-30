@@ -39,21 +39,35 @@ export const generateDailySeed = (mock = 0) => {
     return Math.abs(seed)
 }
 
-export const DAILY_SEED = generateDailySeed(3)
-export const getSeededRNumber = (seed: number, max: number, min = 0) => {
-    return Math.abs(Math.round(((DAILY_SEED * Math.sin(seed)) * 100000000))) % (max - min) + min
+export const DAILY_SEED = generateDailySeed()
+export const getSeededRNumber = (seed: number, max: number, min = 0, seedBase = DAILY_SEED) => {
+    return Math.abs(Math.round(((seedBase * Math.sin(seed)) * 100000000))) % (max - min) + min
 }
 
-export const generatePokemonForRound = (rounds = ROUNDS, guessablePokemon = POKEMON_CHOICE_AMOUNT_INROUND) => {
+export const generatePokemonForRound = (daysSkip = 0, rounds = ROUNDS, guessablePokemon = POKEMON_CHOICE_AMOUNT_INROUND) => {
     let allRounds = []
     let answers: number[] = []
+    let seedBase = generateDailySeed(daysSkip)
+    const makeSeed = (i: number, j: number) => ((i+1) * (j+1) + 4*i) * guessablePokemon
     for (let i = 0; i < rounds; i++) {
-        let randomPokemon: number[] = []
-        for (let j = 0; j < guessablePokemon; j++)
-            randomPokemon.push(getSeededRNumber((i + j + 2) + i * guessablePokemon, 100) + 1)
+        let randomPokemon: number[] = [] // array of choices
+
+        // generate choices
+        for (let j = 0; j < guessablePokemon; j++) {
+            let pokemonChoice = getSeededRNumber(makeSeed(i, j), 100, 0, seedBase) + 1
+
+            // ensure no duplicate choices
+            let k = 1
+            while (randomPokemon.includes(pokemonChoice)) {
+                pokemonChoice = getSeededRNumber(makeSeed(i, j+k), 100, 0, seedBase) + 1
+                k += 1
+            }
+
+            randomPokemon.push(pokemonChoice)
+        }
 
         allRounds.push(randomPokemon)
-        answers.push(getSeededRNumber(i, 4))
+        answers.push(getSeededRNumber(i, 4, 0, seedBase))
     }
 
     return [allRounds, answers]

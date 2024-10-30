@@ -110,7 +110,7 @@ onMounted(async () => {
         <p class="text-yellow-400">Score: {{ SCORE }}</p>
         <p class="text-white">{{ pickedHint == -1 ? NO_FOOT_HELP : hintArray[pickedHint] }}</p>
         <div class="relative w-64 aspect-square">
-            <img :src="base + `/footprints/f${GENERATED_POKEMON[0][currentRound][answerIndex]}.png`" class="absolute top-1/2 left-1/2 z-10 w-32 -translate-x-1/2 -translate-y-1/2 pixelated" alt="">
+            <img :src="base + `/footprints/${GENERATED_POKEMON[0][currentRound][answerIndex]}.webp`" class="absolute top-1/2 left-1/2 z-10 w-32 -translate-x-1/2 -translate-y-1/2 pixelated" alt="">
             <div :style="{backgroundImage: 'radial-gradient(white 15%, transparent 70%)'}" class="absolute inset-0"></div>
         </div>
         <div class="grid grid-cols-2 gap-8">
