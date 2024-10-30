@@ -60,7 +60,6 @@ export const stopMusic = (fadeout = 0, destroy = false) => {
 }
 
 export const toggleVolume = () => {
-    let newVolume = SETTINGS.muteSounds ? 1 : 0
     SETTINGS.muteSounds = !SETTINGS.muteSounds
 
     if (!currentlyPlayingMusic[0]) return

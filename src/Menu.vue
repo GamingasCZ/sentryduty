@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
 import CreditsPopup from './components/CreditsPopup.vue';
-import POKEMON, { DIFFICULTY, getDaysRunningFor, siteStartDay, STARTERS } from './scripts/pokemon';
+import { DIFFICULTY, getDaysRunningFor, STARTERS } from './scripts/pokemon';
 import strings from './strings';
 import MenuBackground from './components/MenuBackground.vue';
 import { menu, playMusic, sounds, toggleVolume } from './scripts/sounds';
@@ -116,8 +116,9 @@ const pickPokemon = (pickedPokemon: number) => {
                             <td :class="{'bg-red-950': DIFFICULTY == 1}" class="text-xl text-red-300 border-2 border-white border-opacity-40 active:brightness-125 hover:bg-red-950">
                                 <button class="py-1 w-full h-full" @click="DIFFICULTY = 1; sound.play('switch')">{{ strings.difficulties[1] }}</button>
                             </td>
-                            <td :class="{'bg-red-900': DIFFICULTY == 2}" class="text-xl text-red-600 border-2 border-white border-opacity-40 active:brightness-125 hover:text-black hover:bg-red-900">
-                                <button class="py-1 w-full h-full" @click="DIFFICULTY = 2; sound.play('switch')">{{ strings.difficulties[2] }}</button>
+                            <td :class="{'bg-red-900': DIFFICULTY == 2}" class="relative text-xl text-red-600 overflow-clip border-2 border-white border-opacity-40 active:brightness-125 hover:text-black hover:bg-red-900">
+                                <img src="./images/flame.webp" class="absolute inset-0 w-full mix-blend-color-dodge pixelated" alt="">
+                                <button class="isolate py-1 w-full h-full" @click="DIFFICULTY = 2; sound.play('switch')">{{ strings.difficulties[2] }}</button>
                             </td>
                         </tr>
                     </tbody>
@@ -130,7 +131,7 @@ const pickPokemon = (pickedPokemon: number) => {
                 <header @click="settingsShown = !settingsShown; sound.play('click')" class="flex items-center cursor-pointer">
                     <img src="./images/gear.svg" class="mr-4 w-6" alt="">
                     <span class="text-2xl">Settings</span>
-                    <img src="./images/arrow.svg" :class="{'-scale-x-75': settingsShown}" class="mr-2 ml-auto w-3 scale-x-75 rotate-90" alt="">
+                    <img src="./images/arrow.svg" :class="{'!-rotate-90': settingsShown}" class="mr-2 ml-auto w-3 scale-x-75 rotate-90" alt="">
                 </header>
                 <hr class="mt-2 opacity-40">
 
@@ -139,7 +140,7 @@ const pickPokemon = (pickedPokemon: number) => {
                         <div class="flex gap-2">
                             <button
                                 @click="pickingPokemon = pickingPokemon == PKPicking.Hero ? PKPicking.No : PKPicking.Hero; sound.play('click')"
-                                class="p-1 h-9 rounded-md border aspect-square"
+                                class="p-1 h-9 rounded-md border-b-2 aspect-square"
                             >
                                 <img
                                     :class="{'drop-shadow-glow brightness-[0.2]': pickingPokemon == PKPicking.Hero}"
@@ -152,7 +153,7 @@ const pickPokemon = (pickedPokemon: number) => {
                         <div class="flex gap-2">
                             <button
                                 @click="pickingPokemon = pickingPokemon == PKPicking.Partner ? PKPicking.No : PKPicking.Partner; sound.play('click')"
-                                class="p-1 h-9 rounded-md border aspect-square"
+                                class="p-1 h-9 rounded-md border-b-2 aspect-square"
                             >
                                 <img
                                     :class="{'drop-shadow-glow brightness-[0.2]': pickingPokemon == PKPicking.Partner}"
@@ -164,8 +165,8 @@ const pickPokemon = (pickedPokemon: number) => {
                         </div>
                     </div>
                     <div v-if="pickingPokemon != PKPicking.No" class="flex flex-wrap gap-2 justify-center px-12 pb-4">
-                        <button @click="pickPokemon(i)" v-for="(pkmn, i) in STARTERS" class="p-1 h-9 rounded-md border hover:border-2 aspect-square">
-                            <img :style="{animationDelay: `${Math.floor(Math.random()*1000)}ms`}" class="h-full transition-transform origin-bottom-left hover:scale-125 hop" :src="`${base}/sprites/${pkmn}.webp`">
+                        <button @click="pickPokemon(i)" v-for="(pkmn, i) in STARTERS" class="p-1 h-9 bg-gradient-to-t from-[#ffffff48] to-transparent group rounded-md border-b-2 hover:border-b-4 aspect-square">
+                            <img :style="{animationDelay: `${Math.floor(Math.random()*1000)}ms`}" class="h-full transition-transform duration-75 group-hover:scale-150 hop" :src="`${base}/sprites/${pkmn}.webp`">
                         </button>
                     </div>
 

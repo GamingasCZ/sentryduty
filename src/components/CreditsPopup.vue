@@ -28,7 +28,7 @@ watch(() => props.open, (_, nowOpen) => {
                         Sprite Repository
                     </a>
                     
-                    <span class="self-center">Hints, Footprints & Sprites|</span>
+                    <span class="self-center">Hints, Footprints & Sprites</span>
                     <a target="_blank" href="https://skytemple.org/" class="p-3 bg-orange-900 bg-opacity-30 rounded-md border-2 border-orange-200">
                         <img src="../images/st.png" class="inline mr-2 w-6" alt="">
                         SkyTemple
