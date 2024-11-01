@@ -14,7 +14,7 @@ body {
 }
 
 @keyframes hopAnim {
-    %0 {
+    0% {
         @apply translate-y-0;    
     }
     50% {
@@ -27,6 +27,7 @@ body {
 
 .hop {
     animation: hopAnim 1100ms cubic-bezier(.13,.91,.21,.97) infinite;
+    animation-delay: 50ms;
     image-rendering: pixelated;
 }
 

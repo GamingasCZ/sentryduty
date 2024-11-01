@@ -19,7 +19,7 @@ export const siteStartDay = new Date(2024, 9, 20)
 
 export const getDaysRunningFor = () => {
     let today = new Date()
-    return Math.floor((today.getTime() - siteStartDay.getTime()) / 86400000) 
+    return Math.floor((today.getTime() - siteStartDay.getTime()) / 86400000)
 }
 
 export const getPokemon = async () => {
@@ -48,7 +48,7 @@ export const generatePokemonForRound = (daysSkip = 0, rounds = ROUNDS, guessable
     let allRounds = []
     let answers: number[] = []
     let seedBase = generateDailySeed(daysSkip)
-    const makeSeed = (i: number, j: number) => ((i+1) * (j+1) + 4*i) * guessablePokemon
+    const makeSeed = (i: number, j: number) => ((i + 1) * (j + 1) + 4 * i) * guessablePokemon
     for (let i = 0; i < rounds; i++) {
         let randomPokemon: number[] = [] // array of choices
 
@@ -59,7 +59,7 @@ export const generatePokemonForRound = (daysSkip = 0, rounds = ROUNDS, guessable
             // ensure no duplicate choices
             let k = 1
             while (randomPokemon.includes(pokemonChoice)) {
-                pokemonChoice = getSeededRNumber(makeSeed(i, j+k), 100, 0, seedBase) + 1
+                pokemonChoice = getSeededRNumber(makeSeed(i, j + k), 100, 0, seedBase) + 1
                 k += 1
             }
 
@@ -71,6 +71,15 @@ export const generatePokemonForRound = (daysSkip = 0, rounds = ROUNDS, guessable
     }
 
     return [allRounds, answers]
+}
+
+export const getAnswers = (dayOffset: number) => {
+    let round = generatePokemonForRound(dayOffset)
+    let answers: number[] = []
+    for (let i = 0; i < round[1].length; i++) {
+        answers.push((round[0][i] as number[])[round[1][i] as number])
+    }
+    return answers
 }
 
 const POKEMON = await getPokemon()

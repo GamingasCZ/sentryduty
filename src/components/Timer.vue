@@ -11,32 +11,39 @@ const emit = defineEmits<{
 
 const timeLeft = ref(props.time)
 
-let timer: number | null
+let timer: NodeJS.Timeout | null
 const startTimer = () => {
-  timeLeft.value = props.time
-  if (!timer.value)
-    clearInterval(timer.value)
-
   timer = setInterval(() => {
-    timeLeft -= 1
+    timeLeft.value -= 1
+    if (timeLeft.value == 0)
+      emit('timeout')
   }, 1000)
 }
 
+const restartTimer = () => {
+  timeLeft.value = props.time
+  if (timer)
+    clearInterval(timer)
+}
+
 const stopTimer = () => {
-  clearInterval(timer.value)
-  timer.value = null
+  if (!timer) return
+  
+  clearInterval(timer)
+  timer = null
 }
 
 defineExpose({
   startTimer,
-  stopTimer
+  stopTimer,
+  restartTimer
 })
 
 </script>
 
 <template>
-  <div class="flex gap-2">
-    <div v-for="on in timeLeft" class="h-2 w-2 bg-yellow-500" />
-    <div v-for="off in (time - timeLeft)" class="h-2 w-2 bg-red-500" />
+  <div class="flex gap-2 my-3">
+    <div v-for="_ in timeLeft" class="w-3 h-4 bg-yellow-500" />
+    <div v-for="_ in (time - timeLeft)" class="w-3 h-4 bg-red-500" />
   </div>
 </template>

@@ -43,6 +43,7 @@ const startTimer = () => {
     let timeOtherHint = ROUND_TIME_SEC * 0.25
     switchedHint = 0
 
+    timerEl?.value?.startTimer()
     timer = setInterval(() => {
         timeLeft.value -= 0.1
 
@@ -64,12 +65,11 @@ const startTimer = () => {
     }, ROUND_TIME_SEC * 10);
 }
 
-const timerEl = ref<HTMLDivElement>()
+const timerEl = ref<HTMLDivElement | any>()
 const startNextRound = () => {
     currentRound.value += 1
     showPotraits.value = false
     pickedHint.value = -1
-    timer.value.startTimer()
 
     // Final round, end game
     if (currentRound.value == ROUNDS)
@@ -85,6 +85,8 @@ const submitGuess = (guessPokemonID: number) => {
         addScore()
     }
 
+    timerEl.value.stopTimer()
+    timerEl.value.restartTimer()
     clearInterval(timer)
     startNextRound()
 }
@@ -107,16 +109,21 @@ onMounted(async () => {
 </script>
 
 <template>
-    <main class="flex font-[pmd] absolute inset-0 flex-col justify-center items-center">
+    <main :style="{backgroundImage: `url(${base}/background/dirt.webp)`}" class="flex font-[pmd] absolute inset-0 flex-col justify-center items-center">
+
+    <!-- Vignette -->
+     <div class="absolute inset-0 bg-[radial-gradient(transparent,#0f0606)]"></div>
+
       <div class="flex justify-between">
-        <p class="text-yellow-400 text-2xl">{{ currentRound+1 }}<span class="text-white mx-2">/</span>{{ ROUNDS }}</p>
-        <p class="text-yellow-400 text-2xl">{{ SCORE }}<span class="text-white">P</span></p>
+        <p class="text-2xl text-yellow-400">{{ currentRound+1 }}<span class="mx-2 text-white">/</span>{{ ROUNDS }}</p>
+        <p class="text-2xl text-yellow-400">{{ SCORE }}<span class="text-white">P</span></p>
       </div>
         <p class="text-white">{{ pickedHint == -1 ? NO_FOOT_HELP : hintArray[pickedHint] }}</p>
         <div class="relative w-64 aspect-square">
             <img :src="base + `/footprints/${GENERATED_POKEMON[0][currentRound][answerIndex]}.webp`" class="absolute top-1/2 left-1/2 z-10 w-32 -translate-x-1/2 -translate-y-1/2 pixelated" alt="">
             <div :style="{backgroundImage: 'radial-gradient(white 15%, transparent 70%)'}" class="absolute inset-0"></div>
         </div>
+        <Timer ref="timerEl" :time="ROUND_TIME_SEC" />
         <div class="grid grid-cols-2 gap-8">
             <PokemonCard
                 v-for="pokemon in GENERATED_POKEMON[0][currentRound]"
@@ -125,7 +132,6 @@ onMounted(async () => {
                 @click="submitGuess(POKEMON[pokemon -1].id)"
             />
         </div>
-        <Timer ref="timerEl" :time="ROUND_TIME_SEC" />
         <meter min="0" :max="ROUND_TIME_SEC" :value="timeLeft"></meter>
   </main>
 </template>

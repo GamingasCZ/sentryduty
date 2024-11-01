@@ -26,10 +26,13 @@ const getCloudCanvas = async (cloundInd: number) => {
 
 let clouds: OffscreenCanvas[] = []
 let cloudsPos: number[][] = []
+let starCanvas: OffscreenCanvas
 const cloudWeight = [0.8, 1.2, 1, 0.9, 1]
 onMounted(() => {
     let motherWidth = main.value?.width!
     let motherHeight = main.value?.height!
+
+    starCanvas = makeStars(100)
 
     for (let i = 0; i < 5; i++) {
         getCloudCanvas(i).then((res: any) => {
@@ -49,7 +52,13 @@ onMounted(() => {
 
 const moveClouds = () => {
     let ctx = main.value?.getContext("2d")
+    if (!ctx) return
+    
     ctx?.clearRect(0, 0, main.value?.width!, main.value?.height!)
+    ctx.globalAlpha = 1
+    ctx?.drawImage(starCanvas, 0, 0)
+    ctx.globalAlpha = 0.1
+
     for (let i = 0; i < clouds.length; i++) {
         cloudsPos[i][0] += 0.25 * cloudWeight[i]
         ctx?.drawImage(clouds[i], cloudsPos[i][0], cloudsPos[i][1])
@@ -61,6 +70,20 @@ const moveClouds = () => {
     }
 }
 
+const makeStars = (amount: number) => {
+    let starCanvas = new OffscreenCanvas(CANVAS_WIDTH, CANVAS_HEIGHT)
+    let ctx = starCanvas.getContext("2d")!
+
+    ctx.fillStyle = "white"
+    for (let i = 0; i < amount; i++) {
+        let starWidth = 2 - Math.floor(Math.random()*2)
+        ctx.beginPath()
+        ctx.ellipse(CANVAS_WIDTH*Math.random(), CANVAS_HEIGHT*Math.random(), starWidth, starWidth, 0, 0, Math.PI*2);
+        ctx.fill()
+    }
+
+    return starCanvas
+}
 
 
 </script>

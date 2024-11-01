@@ -6,6 +6,7 @@ import strings from './strings';
 import MenuBackground from './components/MenuBackground.vue';
 import { menu, playMusic, sounds, toggleVolume } from './scripts/sounds';
 import { hasLocalStorage, SETTINGS } from './scripts/settings';
+import AnswerSheet from './AnswerSheet.vue'
 
 const emit = defineEmits<{
     (e: "startGame"): void
@@ -75,7 +76,7 @@ const pickPokemon = (pickedPokemon: number) => {
 <template>
     <CreditsPopup @close="creditsOpen = false" :open="creditsOpen" />
 
-    <MenuBackground />
+    <MenuBackground :night-theme="true" />
 
     <main ref="mainMenu" class="px-2 py-8 min-h-max w-full font-[pmd] max-w-2xl text-white">
         <h1 class="mb-4 text-5xl font-extrabold text-center">Sentry Duty</h1>
@@ -93,6 +94,9 @@ const pickPokemon = (pickedPokemon: number) => {
                 </div>
                 <div v-else class="pt-8 text-center opacity-40">
                     <span>You haven't played that day...</span>
+
+                    <AnswerSheet :day-selected="daySelected" />
+
                     <div class="grid grid-cols-2 py-4 mb-6">
                         <button class="flex flex-col items-center"><img class="w-20" src="./images/view.svg">Answer</button>
                         <button class="flex flex-col items-center"><img class="w-20" src="./images/view.svg">Play</button>

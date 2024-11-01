@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import AnswerSheet from './AnswerSheet.vue';
 import { stopMusic } from './scripts/sounds';
 
 
@@ -23,9 +24,15 @@ const redditShare = () => "https://reddit.com/submit?url=hello"
     <main>
         <h1 class="mb-4 text-5xl font-extrabold text-center font-[pmd] text-white">You're a Failure!</h1>
         <section class="flex flex-col text-white bg-black bg-opacity-80 font-[pmd] rounded-xl backdrop-blur-md eosBorder">
-            <span>score: 0</span>
-            <p class="mb-2 text-center">Share your score with friends...</p>
-            <div class="flex gap-4 justify-center items-center mb-3 text-2xl">
+            <div class="flex flex-col gap-8 items-center my-6">
+                <div class="flex justify-evenly w-full text-2xl">
+                    <span class="text-yellow-400">Points: 0</span>
+                    <span class="text-lime-400">Time: 0s</span>
+                </div>
+                <AnswerSheet :day-selected="0" :answer-array="[0,0,0,0,0,1]" />
+            </div>
+            <p class="mt-8 mb-2 text-center">Share your score with friends...</p>
+            <div class="flex gap-4 justify-center items-center mb-6 text-2xl">
                 <a :href="blueskyShare"><img class="inline mr-2 mb-1 w-8" src="./images/twitter.svg" alt="">Bluesky</a>
                 <hr class="w-0.5 h-8 bg-white bg-opacity-40 border-none">
                 <a :href="twitterShare"><img class="inline mr-2 mb-1 w-8" src="./images/twitter.svg" alt="">Twitter</a>
