@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import PokemonCard from "./components/PokemonCard.vue"
+import Timer from "./components/Timer.vue"
 import {computed, onMounted, ref} from "vue"
 import POKEMON, { generatePokemonForRound, ROUND_TIME_SEC, ROUNDS } from "./scripts/pokemon";
 import { gameMusic, playMusic } from "./scripts/sounds";
@@ -63,10 +64,12 @@ const startTimer = () => {
     }, ROUND_TIME_SEC * 10);
 }
 
+const timerEl = ref<HTMLDivElement>()
 const startNextRound = () => {
     currentRound.value += 1
     showPotraits.value = false
     pickedHint.value = -1
+    timer.value.startTimer()
 
     // Final round, end game
     if (currentRound.value == ROUNDS)
@@ -104,10 +107,11 @@ onMounted(async () => {
 </script>
 
 <template>
-    <main class="flex absolute inset-0 flex-col justify-center items-center">
-        <meter min="0" :max="ROUND_TIME_SEC" :value="timeLeft"></meter>
-        <p class="text-yellow-400">Round: {{ currentRound+1 }}/{{ ROUNDS }}</p>
-        <p class="text-yellow-400">Score: {{ SCORE }}</p>
+    <main class="flex font-[pmd] absolute inset-0 flex-col justify-center items-center">
+      <div class="flex justify-between">
+        <p class="text-yellow-400 text-2xl">{{ currentRound+1 }}<span class="text-white mx-2">/</span>{{ ROUNDS }}</p>
+        <p class="text-yellow-400 text-2xl">{{ SCORE }}<span class="text-white">P</span></p>
+      </div>
         <p class="text-white">{{ pickedHint == -1 ? NO_FOOT_HELP : hintArray[pickedHint] }}</p>
         <div class="relative w-64 aspect-square">
             <img :src="base + `/footprints/${GENERATED_POKEMON[0][currentRound][answerIndex]}.webp`" class="absolute top-1/2 left-1/2 z-10 w-32 -translate-x-1/2 -translate-y-1/2 pixelated" alt="">
@@ -121,5 +125,7 @@ onMounted(async () => {
                 @click="submitGuess(POKEMON[pokemon -1].id)"
             />
         </div>
+        <Timer ref="timerEl" :time="ROUND_TIME_SEC" />
+        <meter min="0" :max="ROUND_TIME_SEC" :value="timeLeft"></meter>
   </main>
 </template>
