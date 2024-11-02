@@ -1,4 +1,4 @@
-import { generateDailySeed, generatePokemonForRound, getPokemon, POKEMON_COUNT, ROUNDS } from "./pokemon";
+import { generateDailySeed, generatePokemonForRound, getAnswers, getPokemon, POKEMON_COUNT, ROUNDS } from "./pokemon";
 import { describe, expect, test } from "vitest";
 import { readdirSync } from "fs";
 
@@ -56,5 +56,13 @@ describe("Game", () => {
                 }
             }
         })
+        
+        test("Check that Pokemon only appears once per game (next 365 days)", () => {
+            for (let i = 0; i < 365; i++) {
+                let answers = new Set(getAnswers(i))
+                expect(answers.size).toBe(ROUNDS)
+            }
+        })
     })
+
 })

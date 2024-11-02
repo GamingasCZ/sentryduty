@@ -95,11 +95,11 @@ const pickPokemon = (pickedPokemon: number) => {
                 <div v-else class="pt-8 text-center opacity-40">
                     <span>You haven't played that day...</span>
 
-                    <AnswerSheet :day-selected="daySelected" />
+                    <!-- <AnswerSheet :day-selected="daySelected" /> -->
 
                     <div class="grid grid-cols-2 py-4 mb-6">
-                        <button class="flex flex-col items-center"><img class="w-20" src="./images/view.svg">Answer</button>
-                        <button class="flex flex-col items-center"><img class="w-20" src="./images/view.svg">Play</button>
+                        <button class="flex flex-col items-center"><img class="w-20" src="./images/view.svg">Answers</button>
+                        <button class="flex flex-col items-center"><img class="p-4 w-20 -scale-100" src="./images/arrow2.svg">Play</button>
                     </div>
                 </div>
             </div>

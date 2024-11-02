@@ -47,11 +47,13 @@ export const getSeededRNumber = (seed: number, max: number, min = 0, seedBase = 
 export const generatePokemonForRound = (daysSkip = 0, rounds = ROUNDS, guessablePokemon = POKEMON_CHOICE_AMOUNT_INROUND) => {
     let allRounds = []
     let answers: number[] = []
+    let answerPKIDs: number[] = []
     let seedBase = generateDailySeed(daysSkip)
     const makeSeed = (i: number, j: number) => ((i + 1) * (j + 1) + 4 * i) * guessablePokemon
+
     for (let i = 0; i < rounds; i++) {
         let randomPokemon: number[] = [] // array of choices
-
+        
         // generate choices
         for (let j = 0; j < guessablePokemon; j++) {
             let pokemonChoice = getSeededRNumber(makeSeed(i, j), 100, 0, seedBase) + 1
@@ -66,8 +68,19 @@ export const generatePokemonForRound = (daysSkip = 0, rounds = ROUNDS, guessable
             randomPokemon.push(pokemonChoice)
         }
 
+        // Check that no pokemon is the answer more than once in a game
         allRounds.push(randomPokemon)
-        answers.push(getSeededRNumber(i, 4, 0, seedBase))
+        let answerFromChoices = getSeededRNumber(i, 4, 0, seedBase)
+
+        let l = 0
+        while (answerPKIDs.includes(randomPokemon[answerFromChoices]))
+            answerFromChoices = (answerFromChoices + (++l)) % guessablePokemon
+
+        let answerPKID = randomPokemon[answerFromChoices]
+
+
+        answers.push(answerFromChoices)
+        answerPKIDs.push(answerPKID)
     }
 
     return [allRounds, answers]

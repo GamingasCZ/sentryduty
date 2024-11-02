@@ -129,7 +129,7 @@ onMounted(async () => {
                 v-for="pokemon in GENERATED_POKEMON[0][currentRound]"
                 :pokemon_id="pokemon"
                 :show-potrait="showPotraits"
-                @click="submitGuess(POKEMON[pokemon -1].id)"
+                @click="submitGuess(POKEMON[pokemon - 1].id)"
             />
         </div>
         <meter min="0" :max="ROUND_TIME_SEC" :value="timeLeft"></meter>
