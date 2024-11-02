@@ -43,5 +43,5 @@ export const saveScore = (record: SaveRecord) => {
     let saveData: SaveData = JSON.parse(localStorage.getItem(LocalStorageKeys.SaveData)!) ?? {games: {}}
     saveData.games[getDaysRunningFor()] = record
 
-    localStorage.setItem(LocalStorageKeys.SaveData JSON.stringify(saveData))    
+    localStorage.setItem(LocalStorageKeys.SaveData, JSON.stringify(saveData))    
 }

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, reactive, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import CreditsPopup from './components/CreditsPopup.vue';
 import { getDaysRunningFor, STARTERS } from './scripts/pokemon';
 import strings from './strings';
@@ -95,7 +95,7 @@ const pickPokemon = (pickedPokemon: number) => {
     <MenuBackground :night-theme="true" />
 
     <main ref="mainMenu" class="px-2 py-8 min-h-max w-full font-[pmd] max-w-2xl text-white">
-        <h1 class="mb-4 text-5xl font-extrabold text-center">Sentry Duty</h1>{{ savedGames }}
+        <h1 class="mb-4 text-5xl font-extrabold text-center">Sentry Duty</h1>
         <section class="flex flex-col bg-black bg-opacity-80 rounded-xl backdrop-blur-md eosBorder">
             <div class="flex flex-col items-center my-4 h-64">
                 <header class="flex gap-12 justify-between w-max">

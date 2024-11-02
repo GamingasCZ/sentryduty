@@ -68,7 +68,7 @@ const redditShare = () => `https://reddit.com/submit?url=${shareText(false)}`
 
 <template>
     <main>
-        <h1 class="mb-4 text-5xl font-extrabold text-center font-[pmd] text-white">You're a Failure!</h1>
+        <h1 class="mb-4 text-5xl font-extrabold text-center font-[pmd] text-white">{{ headingText[0] }}</h1>
         <section class="flex flex-col text-white bg-black bg-opacity-80 font-[pmd] rounded-xl backdrop-blur-md eosBorder">
             <div class="flex flex-col gap-8 items-center my-6">
                 <div class="flex justify-evenly w-full text-2xl">
