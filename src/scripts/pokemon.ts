@@ -12,8 +12,6 @@ export const ROUNDS = 6
 export const ROUND_TIME_SEC = 15
 export const STARTERS = [1, 4, 7, 25, 37, 52, 133, 152, 155, 158, 258, 280, 283, 286, 328, 422, 425, 428, 438, 488, 489]
 
-
-export const DIFFICULTY = ref(0)
 // month is the 2nd param because silly americans, also month starts at 0
 export const siteStartDay = new Date(2024, 9, 20)
 

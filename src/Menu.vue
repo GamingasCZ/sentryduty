@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, reactive, ref } from 'vue';
 import CreditsPopup from './components/CreditsPopup.vue';
-import { DIFFICULTY, getDaysRunningFor, STARTERS } from './scripts/pokemon';
+import { getDaysRunningFor, STARTERS } from './scripts/pokemon';
 import strings from './strings';
 import MenuBackground from './components/MenuBackground.vue';
 import { menu, playMusic, sounds, toggleVolume } from './scripts/sounds';
-import { hasLocalStorage, SETTINGS } from './scripts/settings';
+import { hasLocalStorage, LocalStorageKeys, SETTINGS } from './scripts/settings';
 import AnswerSheet from './AnswerSheet.vue'
+import { DIFFICULTY, SaveData } from './scripts/stats';
 
 const emit = defineEmits<{
     (e: "startGame"): void
@@ -17,7 +18,13 @@ const settingsShown = ref(false)
 const daySelected = ref(0)
 const daysRunningFor = getDaysRunningFor()
 const hasLocalStorg = hasLocalStorage()
+const viewingAnswers = ref(false)
 const base = import.meta.env.BASE_URL
+const fancyDate = computed(() => {
+    let today = new Date()
+    let date = new Date(today.getTime() + daySelected.value * 86_400_000)
+    return `${date.toLocaleDateString()}`
+})
 
 var sound: Howl
 var menuMusic: Howl
@@ -27,6 +34,14 @@ onMounted(async () => {
 
     playMusic(menuMusic)
 })
+
+const savedGames = ref<SaveData>({games: {}})
+if (hasLocalStorage()) {
+    let save = localStorage.getItem(LocalStorageKeys.SaveData)
+    if (save) {
+        savedGames.value = JSON.parse(save)!
+    }
+}
 
 const mainMenu = ref<HTMLDivElement>()
 const startGameAnimation = () => {
@@ -44,6 +59,7 @@ const startGameAnimation = () => {
 const selectDay = (skipBy: number) => {
     if (daySelected.value + skipBy > 0) return
     
+    viewingAnswers.value = false
     daySelected.value += skipBy
     sound.play('click')
 }
@@ -79,28 +95,45 @@ const pickPokemon = (pickedPokemon: number) => {
     <MenuBackground :night-theme="true" />
 
     <main ref="mainMenu" class="px-2 py-8 min-h-max w-full font-[pmd] max-w-2xl text-white">
-        <h1 class="mb-4 text-5xl font-extrabold text-center">Sentry Duty</h1>
+        <h1 class="mb-4 text-5xl font-extrabold text-center">Sentry Duty</h1>{{ savedGames }}
         <section class="flex flex-col bg-black bg-opacity-80 rounded-xl backdrop-blur-md eosBorder">
-            <div class="flex flex-col items-center my-4">
+            <div class="flex flex-col items-center my-4 h-64">
                 <header class="flex gap-12 justify-between w-max">
                     <button :disabled="Math.abs(daySelected) >= daysRunningFor" class="disabled:opacity-20" @click="selectDay(-1)"><img height="32" src="./images/arrow2.svg" class="w-8" alt=""></button>
                     <span @click="daySelected = 0" :class="{'cursor-pointer hover:underline': daySelected != 0}" class="text-2xl">{{ dayText }}</span>
                     <button :disabled="daySelected == 0" class="disabled:opacity-20" @click="selectDay(1)"><img height="32" src="./images/arrow2.svg" class="w-8 -scale-x-100" alt=""></button>
                 </header>
-                <div v-if="daySelected == 0" class="text-center opacity-40">
-                    <img height="160" src="./images/notPlayedYet.webp" class="my-4" alt="">
-                    <!-- <span>Scores can't be saved without cookies!</span> -->
-                    <span>You haven't played today yet...</span>
+                <div v-if="savedGames.games[daysRunningFor + daySelected]">
+                    <span class="opacity-40">Answers for {{ fancyDate }}</span>
+                    <AnswerSheet :day-selected="daySelected" :answer-array="savedGames.games[daysRunningFor + daySelected].guesses" />
+                    <p class="opacity-40">Points: {{ savedGames.games[daysRunningFor + daySelected].score }}</p>
+                    <p class="opacity-40">Time: {{ savedGames.games[daysRunningFor + daySelected].time }}</p>
                 </div>
-                <div v-else class="pt-8 text-center opacity-40">
-                    <span>You haven't played that day...</span>
-
-                    <!-- <AnswerSheet :day-selected="daySelected" /> -->
-
-                    <div class="grid grid-cols-2 py-4 mb-6">
-                        <button class="flex flex-col items-center"><img class="w-20" src="./images/view.svg">Answers</button>
-                        <button class="flex flex-col items-center"><img class="p-4 w-20 -scale-100" src="./images/arrow2.svg">Play</button>
+                <div v-else-if="daySelected == 0" class="text-center opacity-40">
+                    <div >
+                        <img height="160" src="./images/notPlayedYet.webp" class="my-4" alt="">
+                        <!-- <span>Scores can't be saved without cookies!</span> -->
+                        <span>You haven't played today yet...</span>
                     </div>
+                </div>
+                <div v-else class="text-center">
+
+                    <div v-if="!viewingAnswers">
+                        <p class="mt-2 text-center opacity-40">{{ fancyDate }}</p>
+                        
+                        <div class="grid grid-cols-2 py-4 mt-1 mb-5">
+                            <button @click="viewingAnswers = true; sound.play('click')" class="flex flex-col items-center opacity-40 transition-opacity duration-75 hover:opacity-100"><img class="w-20" src="./images/view.svg">Answers</button>
+                            <button class="flex flex-col items-center opacity-40 transition-opacity duration-75 hover:opacity-100"><img class="p-4 w-20 -scale-100" src="./images/arrow2.svg">Play</button>
+                        </div>
+                        <span class="opacity-40">You haven't played that day...</span>
+                    </div>
+
+                    <div v-else class="flex flex-col gap-4 my-4">
+                        <span class="opacity-40">Answers for {{ fancyDate }}</span>
+                        <AnswerSheet :day-selected="daySelected" />
+                        <button class="text-2xl text-blue-300 hover:underline" @click="viewingAnswers = false; sound.play('click')">Back</button>
+                    </div>
+
                 </div>
             </div>
 
@@ -186,7 +219,7 @@ const pickPokemon = (pickedPokemon: number) => {
             </section>
 
             <div class="play">
-                <button @click="creditsOpen = true; sound.play('click')" class="p-2 text-lg bg-opacity-10 rounded-md text-slate-300">Credits</button>
+                <button @click="creditsOpen = true; sound.play('click')" class="p-2 text-lg bg-opacity-10 rounded-md text-slate-200">Credits</button>
                 <button @click="startGameAnimation()" class="p-2 text-4xl font-black text-green-300 bg-green-700 bg-opacity-40 rounded-md border-2 border-green-300">Play</button>
                 <button :disabled="!hasLocalStorg" @click="sound.play('click')" class="p-2 text-lg text-yellow-500 bg-opacity-10 rounded-md disabled:opacity-20">Highscores</button>
             </div>

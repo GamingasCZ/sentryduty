@@ -56,7 +56,7 @@ describe("Game", () => {
                 }
             }
         })
-        
+
         test("Check that Pokemon only appears once per game (next 365 days)", () => {
             for (let i = 0; i < 365; i++) {
                 let answers = new Set(getAnswers(i))

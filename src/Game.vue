@@ -4,6 +4,8 @@ import Timer from "./components/Timer.vue"
 import {computed, onMounted, ref} from "vue"
 import POKEMON, { generatePokemonForRound, ROUND_TIME_SEC, ROUNDS } from "./scripts/pokemon";
 import { gameMusic, playMusic } from "./scripts/sounds";
+import Textbox from "./components/Textbox.vue";
+import { ALL_GUESSES, SCORE } from "./scripts/stats";
 
 const emit = defineEmits<{
     (e: "gameFinished", result: {score: number}): void
@@ -19,7 +21,6 @@ const currentRound = ref(0)
 const timeLeft = ref(0)
 const timeLeftMSec = ref(0)
 const pickedHint = ref(-1)
-const SCORE = ref(0)
 
 const showPotraits = ref(false)
 const showSprites = ref(false)
@@ -85,6 +86,7 @@ const submitGuess = (guessPokemonID: number) => {
         addScore()
     }
 
+    ALL_GUESSES.value.push(guessPokemonID)
     timerEl.value.stopTimer()
     timerEl.value.restartTimer()
     clearInterval(timer)
@@ -109,29 +111,33 @@ onMounted(async () => {
 </script>
 
 <template>
-    <main :style="{backgroundImage: `url(${base}/background/dirt.webp)`}" class="flex font-[pmd] absolute inset-0 flex-col justify-center items-center">
-
     <!-- Vignette -->
-     <div class="absolute inset-0 bg-[radial-gradient(transparent,#0f0606)]"></div>
+    
+    <main :style="{backgroundImage: `url(${base}/background/dirt.webp)`}" class="font-[pmd] flex justify-center absolute inset-0">
+        
+        <div class="absolute z-0 inset-0 bg-[radial-gradient(transparent,#0f0606)]"></div>
 
-      <div class="flex justify-between">
-        <p class="text-2xl text-yellow-400">{{ currentRound+1 }}<span class="mx-2 text-white">/</span>{{ ROUNDS }}</p>
-        <p class="text-2xl text-yellow-400">{{ SCORE }}<span class="text-white">P</span></p>
-      </div>
-        <p class="text-white">{{ pickedHint == -1 ? NO_FOOT_HELP : hintArray[pickedHint] }}</p>
-        <div class="relative w-64 aspect-square">
-            <img :src="base + `/footprints/${GENERATED_POKEMON[0][currentRound][answerIndex]}.webp`" class="absolute top-1/2 left-1/2 z-10 w-32 -translate-x-1/2 -translate-y-1/2 pixelated" alt="">
-            <div :style="{backgroundImage: 'radial-gradient(white 15%, transparent 70%)'}" class="absolute inset-0"></div>
-        </div>
-        <Timer ref="timerEl" :time="ROUND_TIME_SEC" />
-        <div class="grid grid-cols-2 gap-8">
-            <PokemonCard
-                v-for="pokemon in GENERATED_POKEMON[0][currentRound]"
-                :pokemon_id="pokemon"
-                :show-potrait="showPotraits"
-                @click="submitGuess(POKEMON[pokemon - 1].id)"
-            />
-        </div>
-        <meter min="0" :max="ROUND_TIME_SEC" :value="timeLeft"></meter>
+        <section class="flex z-10 flex-col justify-center items-center mx-auto max-w-3xl">
+            <div class="flex justify-between w-full">
+              <p class="text-2xl text-yellow-400">{{ currentRound+1 }}<span class="mx-2 text-white">/</span>{{ ROUNDS }}</p>
+              <p class="text-2xl text-yellow-400">{{ SCORE }}<span class="text-white">P</span></p>
+            </div>
+              <!-- <p class="text-white">{{ pickedHint == -1 ? NO_FOOT_HELP : hintArray[pickedHint] }}</p> -->
+              <div class="relative w-64 aspect-square">
+                  <img :src="base + `/footprints/${GENERATED_POKEMON[0][currentRound][answerIndex]}.webp`" class="absolute top-1/2 left-1/2 z-10 w-32 -translate-x-1/2 -translate-y-1/2 pixelated" alt="">
+                  <div :style="{backgroundImage: 'radial-gradient(white 15%, transparent 70%)'}" class="absolute inset-0"></div>
+              </div>
+              <Timer ref="timerEl" :time="ROUND_TIME_SEC" />
+              <div class="grid grid-cols-2 gap-8">
+                  <PokemonCard
+                      v-for="pokemon in GENERATED_POKEMON[0][currentRound]"
+                      :pokemon_id="pokemon"
+                      :show-potrait="showPotraits"
+                      @click="submitGuess(POKEMON[pokemon - 1].id)"
+                  />
+              </div>
+              <Textbox :text="pickedHint == -1 ? NO_FOOT_HELP : hintArray[pickedHint]" />
+              <!-- <meter min="0" :max="ROUND_TIME_SEC" :value="timeLeft"></meter> -->
+        </section>
   </main>
 </template>

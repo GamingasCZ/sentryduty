@@ -20,5 +20,6 @@ const Results = defineAsyncComponent(() => import('./ResultsScreen.vue'))
     @start-game="state = GAME_STATE.PLAYING"
     @game-finished="state = GAME_STATE.RESULTS"
     @back-to-menu="state = GAME_STATE.IN_MENU"
+    @replay="state = GAME_STATE.PLAYING"
   />
 </template>
