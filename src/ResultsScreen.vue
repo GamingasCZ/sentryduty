@@ -2,7 +2,7 @@
 import AnswerSheet from './AnswerSheet.vue';
 import POKEMON, { getAnswers } from './scripts/pokemon';
 import { stopMusic } from './scripts/sounds';
-import { ALL_GUESSES, DIFFICULTY, LIVES, resetGame, SaveRecord, saveScore, SCORE, TIME_SPENT, TIME_SPENT_ROUNDS } from './scripts/stats';
+import { ALL_GUESSES, DAY_PLAYING_OFFSET, DIFFICULTY, LIVES, MAX_POSSIBLE_SCORE, resetGame, SaveRecord, saveScore, SCORE, TIME_SPENT, TIME_SPENT_ROUNDS } from './scripts/stats';
 
 
 const emit = defineEmits<{
@@ -34,8 +34,8 @@ saveRecord()
 
 const exit = (to: 'backToMenu' | 'replay') => {
     stopMusic(2000)
-    resetGame()
     setTimeout(() => {
+        resetGame()
         emit(to as any)
     }, 2000);
 }
@@ -55,7 +55,14 @@ const shareText = (isBluesky: boolean) => {
             correct.push("❌")
     }
 
-    return encodeURIComponent(`I got ${SCORE.value} points on today's Sentry Duty!${nl}\
+    let header: string
+    let off = Math.abs(DAY_PLAYING_OFFSET.value)
+    if (DAY_PLAYING_OFFSET.value == 0)
+        header = `I got ${SCORE.value} points on today's Sentry Duty!`
+    else
+        header = `I got ${SCORE.value} points on Sentry Duty from ${off} day${off == 1 ? '' : 's'} ago!`
+ 
+    return encodeURIComponent(`${header}${nl}\
 ${correct.join(" ")} ${correctAmount}/${answers.length}${nl}${nl}\
 Try beating my score on gamingas.cz/sentryduty`)
 }
@@ -68,14 +75,14 @@ const redditShare = () => `https://reddit.com/submit?url=${shareText(false)}`
 
 <template>
     <main>
-        <h1 class="mb-4 text-5xl font-extrabold text-center font-[pmd] text-white">{{ headingText[0] }}</h1>
+        <h1 class="mb-4 text-5xl font-extrabold text-center font-[pmd] text-white">{{ headingText[Math.round(SCORE / MAX_POSSIBLE_SCORE * 4)] }}</h1>
         <section class="flex flex-col text-white bg-black bg-opacity-80 font-[pmd] rounded-xl backdrop-blur-md eosBorder">
             <div class="flex flex-col gap-8 items-center my-6">
                 <div class="flex justify-evenly w-full text-2xl">
                     <span class="text-yellow-400">Points: {{ SCORE }}</span>
                     <span class="text-lime-400">Time: {{ TIME_SPENT }}s</span>
                 </div>
-                <AnswerSheet :day-selected="0" :answer-array="ALL_GUESSES" />
+                <AnswerSheet :day-selected="DAY_PLAYING_OFFSET" :answer-array="ALL_GUESSES" />
             </div>
             <p class="mt-8 mb-2 text-center">Share your score with friends...</p>
             <div class="flex gap-4 justify-center items-center mb-6 text-2xl">

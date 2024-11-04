@@ -1,5 +1,3 @@
-import { ref } from 'vue'
-
 interface Pokemon {
     name: string
     id: number

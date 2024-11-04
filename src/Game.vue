@@ -5,13 +5,13 @@ import {computed, onMounted, ref} from "vue"
 import POKEMON, { generatePokemonForRound, ROUND_TIME_SEC, ROUNDS } from "./scripts/pokemon";
 import { gameMusic, playMusic } from "./scripts/sounds";
 import Textbox from "./components/Textbox.vue";
-import { ALL_GUESSES, SCORE } from "./scripts/stats";
+import { ALL_GUESSES, DAY_PLAYING_OFFSET, SCORE } from "./scripts/stats";
 
 const emit = defineEmits<{
     (e: "gameFinished", result: {score: number}): void
 }>()
 
-const GENERATED_POKEMON = generatePokemonForRound() as [number[][], number[]]
+const GENERATED_POKEMON = generatePokemonForRound(DAY_PLAYING_OFFSET.value) as [number[][], number[]]
 
 const answerIndex = computed(() => GENERATED_POKEMON[1][currentRound.value] as number)
 const answerPokemon = computed(() => POKEMON[GENERATED_POKEMON[0][currentRound.value][answerIndex.value] - 1])

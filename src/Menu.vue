@@ -4,10 +4,10 @@ import CreditsPopup from './components/CreditsPopup.vue';
 import { getDaysRunningFor, STARTERS } from './scripts/pokemon';
 import strings from './strings';
 import MenuBackground from './components/MenuBackground.vue';
-import { menu, playMusic, sounds, toggleVolume } from './scripts/sounds';
+import { menu, playMusic, sounds, stopMusic, toggleVolume } from './scripts/sounds';
 import { hasLocalStorage, LocalStorageKeys, SETTINGS } from './scripts/settings';
 import AnswerSheet from './AnswerSheet.vue'
-import { DIFFICULTY, SaveData } from './scripts/stats';
+import { DAY_PLAYING_OFFSET, DIFFICULTY, SaveData } from './scripts/stats';
 
 const emit = defineEmits<{
     (e: "startGame"): void
@@ -48,8 +48,9 @@ const startGameAnimation = () => {
     if (mainMenu)
         mainMenu.value?.classList.add("slideDown")
     
-    menuMusic.fade(1.0, 0.0, 2000)
+    stopMusic(2000, true)
     setTimeout(() => {
+        DAY_PLAYING_OFFSET.value = 0
         emit('startGame')
     }, 2000);
 }
@@ -62,6 +63,14 @@ const selectDay = (skipBy: number) => {
     viewingAnswers.value = false
     daySelected.value += skipBy
     sound.play('click')
+}
+
+const playOtherDay = () => {
+    stopMusic(2000, true)
+    setTimeout(() => {
+        DAY_PLAYING_OFFSET.value = daySelected.value
+        emit('startGame')
+    }, 2000);
 }
 
 const dayText = computed(() => {
@@ -104,10 +113,13 @@ const pickPokemon = (pickedPokemon: number) => {
                     <button :disabled="daySelected == 0" class="disabled:opacity-20" @click="selectDay(1)"><img height="32" src="./images/arrow2.svg" class="w-8 -scale-x-100" alt=""></button>
                 </header>
                 <div v-if="savedGames.games[daysRunningFor + daySelected]">
-                    <span class="opacity-40">Answers for {{ fancyDate }}</span>
+                    <p class="mt-2 text-center opacity-40">{{ fancyDate }}</p>
+                    <div class="flex justify-between my-4 text-xl">
+                        <p class="text-yellow-400">Points: {{ savedGames.games[daysRunningFor + daySelected].score }}</p>
+                        <p class="text-lime-400">Time: {{ savedGames.games[daysRunningFor + daySelected].time }}s</p>
+                    </div>
+                    <p>difficutly todog</p>
                     <AnswerSheet :day-selected="daySelected" :answer-array="savedGames.games[daysRunningFor + daySelected].guesses" />
-                    <p class="opacity-40">Points: {{ savedGames.games[daysRunningFor + daySelected].score }}</p>
-                    <p class="opacity-40">Time: {{ savedGames.games[daysRunningFor + daySelected].time }}</p>
                 </div>
                 <div v-else-if="daySelected == 0" class="text-center opacity-40">
                     <div >
@@ -123,7 +135,7 @@ const pickPokemon = (pickedPokemon: number) => {
                         
                         <div class="grid grid-cols-2 py-4 mt-1 mb-5">
                             <button @click="viewingAnswers = true; sound.play('click')" class="flex flex-col items-center opacity-40 transition-opacity duration-75 hover:opacity-100"><img class="w-20" src="./images/view.svg">Answers</button>
-                            <button class="flex flex-col items-center opacity-40 transition-opacity duration-75 hover:opacity-100"><img class="p-4 w-20 -scale-100" src="./images/arrow2.svg">Play</button>
+                            <button @click="playOtherDay()" class="flex flex-col items-center opacity-40 transition-opacity duration-75 hover:opacity-100"><img class="p-4 w-20 -scale-100" src="./images/arrow2.svg">Play</button>
                         </div>
                         <span class="opacity-40">You haven't played that day...</span>
                     </div>

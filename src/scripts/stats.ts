@@ -1,10 +1,11 @@
 import { ref } from "vue";
 import { hasLocalStorage, LocalStorageKeys } from "./settings";
-import { getDaysRunningFor } from "./pokemon";
+import { getDaysRunningFor, ROUNDS } from "./pokemon";
 
 const DEFAULT_LIVES = 2
 
 export const SCORE = ref(0)
+export const MAX_POSSIBLE_SCORE = ROUNDS * 1500
 export const LIVES = ref(DEFAULT_LIVES)
 export const ALL_GUESSES = ref<number[]>([])
 export const TIME_SPENT = ref(0)
@@ -41,7 +42,7 @@ export const saveScore = (record: SaveRecord) => {
     if (!hasLocalStorage()) return
     
     let saveData: SaveData = JSON.parse(localStorage.getItem(LocalStorageKeys.SaveData)!) ?? {games: {}}
-    saveData.games[getDaysRunningFor()] = record
+    saveData.games[getDaysRunningFor() + DAY_PLAYING_OFFSET.value] = record
 
     localStorage.setItem(LocalStorageKeys.SaveData, JSON.stringify(saveData))    
 }
